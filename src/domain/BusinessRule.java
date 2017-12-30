@@ -137,7 +137,7 @@ public abstract class BusinessRule<B extends BusinessRule.Builder<B>> {
         this.example = example;
     }
 
-    abstract static class Builder<B extends BusinessRule.Builder<B>>{
+    abstract static class Builder<B extends BusinessRule.Builder<B>> {
 
         protected String code;
         protected String name;
@@ -155,57 +155,57 @@ public abstract class BusinessRule<B extends BusinessRule.Builder<B>> {
 
         public B setCode(String code) {
             this.code = code;
-            return (B)this;
+            return (B) this;
         }
 
         public B setName(String name) {
             this.name = name;
-            return (B)this;
+            return (B) this;
         }
 
         public B setExplanation(String explanation) {
             this.explanation = explanation;
-            return (B)this;
+            return (B) this;
         }
 
         public B setMainTable(String mainTable) {
             this.mainTable = mainTable;
-            return (B)this;
+            return (B) this;
         }
 
         public B setInsert(boolean insert) {
             this.insert = insert;
-            return (B)this;
+            return (B) this;
         }
 
         public B setUpdate(boolean update) {
             this.update = update;
-            return (B)this;
+            return (B) this;
         }
 
         public B setDelete(boolean delete) {
             this.delete = delete;
-            return (B)this;
+            return (B) this;
         }
 
         public B setTrigger(boolean trigger) {
             this.trigger = trigger;
-            return (B)this;
+            return (B) this;
         }
 
         public B setConstraint(boolean constraint) {
             this.constraint = constraint;
-            return (B)this;
+            return (B) this;
         }
 
         public B setGeneratedCode(String generatedCode) {
             this.generatedCode = generatedCode;
-            return (B)this;
+            return (B) this;
         }
 
         public B setErrorCode(String errorCode) {
             this.errorCode = errorCode;
-            return (B)this;
+            return (B) this;
         }
 
         public Builder setAffectedColumn(String affectedColumn) {
@@ -218,7 +218,7 @@ public abstract class BusinessRule<B extends BusinessRule.Builder<B>> {
             return this;
         }
 
-        abstract BusinessRule<B> build ();
+        abstract BusinessRule<B> build();
 
 
     }
@@ -226,19 +226,19 @@ public abstract class BusinessRule<B extends BusinessRule.Builder<B>> {
     @Override
     public String toString() {
         return
-                ", code='" + code + '\'' +"\n"+
-                ", name='" + name + '\'' +"\n"+
-                ", explanation='" + explanation + '\'' +"\n"+
-                ", mainTable='" + mainTable + '\'' +"\n"+
-                ", insert=" + insert +"\n"+
-                ", update=" + update +"\n"+
-                ", delete=" + delete +"\n"+
-                ", trigger=" + trigger +"\n"+
-                ", constraint=" + constraint +"\n"+
-                ", generatedCode='" + generatedCode + '\'' +"\n"+
-                ", errorCode='" + errorCode + '\'' +"\n"+
-                ", affectedColumn='" + affectedColumn + '\'' +"\n"+
-                ", example='" + example + '\'' +"\n"+
-                '}';
+                ", code='" + code + '\'' + "\n" +
+                        ", name='" + name + '\'' + "\n" +
+                        ", explanation='" + explanation + '\'' + "\n" +
+                        ", mainTable='" + mainTable + '\'' + "\n" +
+                        ", insert=" + insert + "\n" +
+                        ", update=" + update + "\n" +
+                        ", delete=" + delete + "\n" +
+                        ", trigger=" + trigger + "\n" +
+                        ", constraint=" + constraint + "\n" +
+                        ", generatedCode='" + generatedCode + '\'' + "\n" +
+                        ", errorCode='" + errorCode + '\'' + "\n" +
+                        ", affectedColumn='" + affectedColumn + '\'' + "\n" +
+                        ", example='" + example + '\'' + "\n" +
+                        '}';
     }
 }

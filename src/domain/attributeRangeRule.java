@@ -16,7 +16,7 @@ public class attributeRangeRule<B extends attributeRangeRule.Builder<B>> extends
         this.insideRange = builder.insideRange;
     }
 
-    public static class Builder<B extends attributeRangeRule.Builder<B>> extends BusinessRule.Builder<B>{
+    public static class Builder<B extends attributeRangeRule.Builder<B>> extends BusinessRule.Builder<B> {
 
         private int rangeStart;
         private int rangeEnd;
@@ -24,20 +24,20 @@ public class attributeRangeRule<B extends attributeRangeRule.Builder<B>> extends
 
         public B setRangeStart(int rangeStart) {
             this.rangeStart = rangeStart;
-            return (B)this;
+            return (B) this;
         }
 
         public B setRangeEnd(int rangeEnd) {
             this.rangeEnd = rangeEnd;
-            return (B)this;
+            return (B) this;
         }
 
         public B setInsideRange(boolean insideRange) {
             this.insideRange = insideRange;
-            return (B)this;
+            return (B) this;
         }
 
-        public attributeRangeRule<B> build(){
+        public attributeRangeRule<B> build() {
             return new attributeRangeRule<>(this);
         }
 
@@ -45,11 +45,11 @@ public class attributeRangeRule<B extends attributeRangeRule.Builder<B>> extends
 
     @Override
     public String toString() {
-        return "attributeRangeRule{" +"\n"+
-                "insideRange=" + insideRange +"\n"+
-                ", rangeEnd=" + rangeEnd +"\n"+
-                ", rangeStart=" + rangeStart +"\n"
-                 + super.toString();
+        return "attributeRangeRule{" + "\n" +
+                "insideRange=" + insideRange + "\n" +
+                ", rangeEnd=" + rangeEnd + "\n" +
+                ", rangeStart=" + rangeStart + "\n"
+                + super.toString();
     }
 }
 
