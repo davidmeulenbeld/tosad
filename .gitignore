@@ -26,6 +26,7 @@ hs_err_pid*
 .metadata/
 RemoteSystemsTempFiles/
 
+#idea files#
 .idea/
 .recommenders/
 /bin/
