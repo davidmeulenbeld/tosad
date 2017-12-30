@@ -57,6 +57,7 @@ public class attributeRangeRule<B extends attributeRangeRule.Builder<B>> extends
                 ", constraint=" + constraint +
                 ", generatedCode='" + generatedCode + '\'' +
                 ", errorCode='" + errorCode + '\'' +
+                ", affectedColumn='" + affectedColumn + '\'' +
                 '}';
     }
 }

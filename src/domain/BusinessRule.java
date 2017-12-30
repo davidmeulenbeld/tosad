@@ -13,6 +13,7 @@ public abstract class BusinessRule<B extends BusinessRule.Builder<B>> {
     protected boolean constraint;
     protected String generatedCode;
     protected String errorCode;
+    protected String affectedColumn;
 
     public BusinessRule(Builder<B> builder) {
         this.code = builder.code;
@@ -26,6 +27,7 @@ public abstract class BusinessRule<B extends BusinessRule.Builder<B>> {
         this.constraint = builder.constraint;
         this.generatedCode = builder.generatedCode;
         this.errorCode = builder.errorCode;
+        this.affectedColumn = builder.affectedColumn;
     }
 
 
@@ -73,6 +75,10 @@ public abstract class BusinessRule<B extends BusinessRule.Builder<B>> {
         return errorCode;
     }
 
+    public String getAffectedColumn() {
+        return affectedColumn;
+    }
+
     public void setCode(String code) {
         this.code = code;
     }
@@ -117,7 +123,9 @@ public abstract class BusinessRule<B extends BusinessRule.Builder<B>> {
         this.errorCode = errorCode;
     }
 
-
+    public void setAffectedColumn(String affectedColumn) {
+        this.affectedColumn = affectedColumn;
+    }
 
     abstract static class Builder<B extends BusinessRule.Builder<B>>{
 
@@ -132,6 +140,7 @@ public abstract class BusinessRule<B extends BusinessRule.Builder<B>> {
         protected boolean constraint;
         protected String generatedCode;
         protected String errorCode;
+        protected String affectedColumn;
 
         public B setCode(String code) {
             this.code = code;
@@ -187,6 +196,12 @@ public abstract class BusinessRule<B extends BusinessRule.Builder<B>> {
             this.errorCode = errorCode;
             return (B)this;
         }
+
+        public Builder setAffectedColumn(String affectedColumn) {
+            this.affectedColumn = affectedColumn;
+            return this;
+        }
+
         abstract BusinessRule<B> build ();
 
 
@@ -206,6 +221,7 @@ public abstract class BusinessRule<B extends BusinessRule.Builder<B>> {
                 ", constraint=" + constraint +
                 ", generatedCode='" + generatedCode + '\'' +
                 ", errorCode='" + errorCode + '\'' +
+                ", affectedColumn='" + affectedColumn + '\'' +
                 '}';
     }
 }
