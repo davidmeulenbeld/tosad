@@ -14,6 +14,7 @@ public abstract class BusinessRule<B extends BusinessRule.Builder<B>> {
     protected String generatedCode;
     protected String errorCode;
     protected String affectedColumn;
+    protected String example;
 
     public BusinessRule(Builder<B> builder) {
         this.code = builder.code;
@@ -28,6 +29,7 @@ public abstract class BusinessRule<B extends BusinessRule.Builder<B>> {
         this.generatedCode = builder.generatedCode;
         this.errorCode = builder.errorCode;
         this.affectedColumn = builder.affectedColumn;
+        this.example = builder.example;
     }
 
 
@@ -79,6 +81,10 @@ public abstract class BusinessRule<B extends BusinessRule.Builder<B>> {
         return affectedColumn;
     }
 
+    public String getExample() {
+        return example;
+    }
+
     public void setCode(String code) {
         this.code = code;
     }
@@ -127,6 +133,10 @@ public abstract class BusinessRule<B extends BusinessRule.Builder<B>> {
         this.affectedColumn = affectedColumn;
     }
 
+    public void setExample(String example) {
+        this.example = example;
+    }
+
     abstract static class Builder<B extends BusinessRule.Builder<B>>{
 
         protected String code;
@@ -141,6 +151,7 @@ public abstract class BusinessRule<B extends BusinessRule.Builder<B>> {
         protected String generatedCode;
         protected String errorCode;
         protected String affectedColumn;
+        protected String example;
 
         public B setCode(String code) {
             this.code = code;
@@ -202,6 +213,11 @@ public abstract class BusinessRule<B extends BusinessRule.Builder<B>> {
             return this;
         }
 
+        public Builder setExample(String example) {
+            this.example = example;
+            return this;
+        }
+
         abstract BusinessRule<B> build ();
 
 
@@ -209,19 +225,20 @@ public abstract class BusinessRule<B extends BusinessRule.Builder<B>> {
 
     @Override
     public String toString() {
-        return "BusinessRule{" +
-                "code='" + code + '\'' +
-                ", name='" + name + '\'' +
-                ", explanation='" + explanation + '\'' +
-                ", mainTable='" + mainTable + '\'' +
-                ", insert=" + insert +
-                ", update=" + update +
-                ", delete=" + delete +
-                ", trigger=" + trigger +
-                ", constraint=" + constraint +
-                ", generatedCode='" + generatedCode + '\'' +
-                ", errorCode='" + errorCode + '\'' +
-                ", affectedColumn='" + affectedColumn + '\'' +
+        return
+                ", code='" + code + '\'' +"\n"+
+                ", name='" + name + '\'' +"\n"+
+                ", explanation='" + explanation + '\'' +"\n"+
+                ", mainTable='" + mainTable + '\'' +"\n"+
+                ", insert=" + insert +"\n"+
+                ", update=" + update +"\n"+
+                ", delete=" + delete +"\n"+
+                ", trigger=" + trigger +"\n"+
+                ", constraint=" + constraint +"\n"+
+                ", generatedCode='" + generatedCode + '\'' +"\n"+
+                ", errorCode='" + errorCode + '\'' +"\n"+
+                ", affectedColumn='" + affectedColumn + '\'' +"\n"+
+                ", example='" + example + '\'' +"\n"+
                 '}';
     }
 }

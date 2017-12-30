@@ -8,6 +8,9 @@ public class attributeRangeRule<B extends attributeRangeRule.Builder<B>> extends
 
     public attributeRangeRule(Builder<B> builder) {
         super(builder);
+        this.code = "ARNG";
+        this.explanation = "the parameter value must be in or out the specified range";
+        this.example = "all postal codes can participate, except 3700 up to 4100";
         this.rangeStart = builder.rangeStart;
         this.rangeEnd = builder.rangeEnd;
         this.insideRange = builder.insideRange;
@@ -42,23 +45,11 @@ public class attributeRangeRule<B extends attributeRangeRule.Builder<B>> extends
 
     @Override
     public String toString() {
-        return "attributeRangeRule{" +
-                "rangeStart=" + rangeStart +
-                ", rangeEnd=" + rangeEnd +
-                ", insideRange=" + insideRange +
-                ", code='" + code + '\'' +
-                ", name='" + name + '\'' +
-                ", explanation='" + explanation + '\'' +
-                ", mainTable='" + mainTable + '\'' +
-                ", insert=" + insert +
-                ", update=" + update +
-                ", delete=" + delete +
-                ", trigger=" + trigger +
-                ", constraint=" + constraint +
-                ", generatedCode='" + generatedCode + '\'' +
-                ", errorCode='" + errorCode + '\'' +
-                ", affectedColumn='" + affectedColumn + '\'' +
-                '}';
+        return "attributeRangeRule{" +"\n"+
+                "insideRange=" + insideRange +"\n"+
+                ", rangeEnd=" + rangeEnd +"\n"+
+                ", rangeStart=" + rangeStart +"\n"
+                 + super.toString();
     }
 }
 
