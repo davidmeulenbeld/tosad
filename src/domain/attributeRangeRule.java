@@ -16,6 +16,18 @@ public class attributeRangeRule<B extends attributeRangeRule.Builder<B>> extends
         this.insideRange = builder.insideRange;
     }
 
+    public int getRangeStart() {
+        return rangeStart;
+    }
+
+    public int getRangeEnd() {
+        return rangeEnd;
+    }
+
+    public boolean isInsideRange() {
+        return insideRange;
+    }
+
     public static class Builder<B extends attributeRangeRule.Builder<B>> extends BusinessRule.Builder<B> {
 
         private int rangeStart;
