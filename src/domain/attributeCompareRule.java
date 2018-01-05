@@ -7,7 +7,7 @@ public class attributeCompareRule <B extends attributeCompareRule.Builder<B>> ex
     public attributeCompareRule(Builder<B> builder){
         super(builder);
         this.code="ACMP";
-        this.explanation="the parameter value must equal, unequal, bigger, smaller, equal or bigger, equal or smaller than the given value";
+        this.explanation="the parameter value must be equal, unequal, bigger, smaller, equal or bigger, equal or smaller than the given value";
         this.example="amount needs to be equal or bigger than 1";
         this.operator=builder.operator;
         this.value=builder.value;
