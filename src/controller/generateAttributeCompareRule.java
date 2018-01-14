@@ -8,6 +8,11 @@ public class generateAttributeCompareRule {
     }
 
     public void createAttributeCompareRule(attributeCompareRule compareRule){
+        String basestring = "Create or replace trigger";
+        basestring += compareRule.getName() + "\n"
+        + "before";
 
     }
+
+
 }
