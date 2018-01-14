@@ -21,7 +21,7 @@ public class attributeCompareRule <B extends attributeCompareRule.Builder<B>> ex
         return value;
     }
 
-    public static class Builder<B extends attributeCompareRule.Builder<B>> extends BusinessRule.Builder<B> {
+    public static class Builder <B extends attributeCompareRule.Builder<B>> extends BusinessRule.Builder<B> {
 
     private String operator;
     private int value;
