@@ -1,6 +1,6 @@
 package domain;
 
-public abstract class BusinessRule<B extends BusinessRule.Builder<B>> {
+public  class BusinessRule {
 
     protected String code;
     protected String name;
@@ -16,21 +16,7 @@ public abstract class BusinessRule<B extends BusinessRule.Builder<B>> {
     protected String affectedColumn;
     protected String example;
 
-    public BusinessRule(Builder<B> builder) {
-        this.code = builder.code;
-        this.name = builder.name;
-        this.explanation = builder.explanation;
-        this.mainTable = builder.mainTable;
-        this.insert = builder.insert;
-        this.update = builder.update;
-        this.delete = builder.delete;
-        this.trigger = builder.trigger;
-        this.constraint = builder.constraint;
-        this.generatedCode = builder.generatedCode;
-        this.errorCode = builder.errorCode;
-        this.affectedColumn = builder.affectedColumn;
-        this.example = builder.example;
-    }
+
 
 
     public String getCode() {
@@ -85,59 +71,8 @@ public abstract class BusinessRule<B extends BusinessRule.Builder<B>> {
         return example;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setExplanation(String explanation) {
-        this.explanation = explanation;
-    }
-
-    public void setMainTable(String mainTable) {
-        this.mainTable = mainTable;
-    }
-
-    public void setInsert(boolean insert) {
-        this.insert = insert;
-    }
-
-    public void setUpdate(boolean update) {
-        this.update = update;
-    }
-
-    public void setDelete(boolean delete) {
-        this.delete = delete;
-    }
-
-    public void setTrigger(boolean trigger) {
-        this.trigger = trigger;
-    }
-
-    public void setConstraint(boolean constraint) {
-        this.constraint = constraint;
-    }
-
-    public void setGeneratedCode(String generatedCode) {
-        this.generatedCode = generatedCode;
-    }
-
-    public void setErrorCode(String errorCode) {
-        this.errorCode = errorCode;
-    }
-
-    public void setAffectedColumn(String affectedColumn) {
-        this.affectedColumn = affectedColumn;
-    }
-
-    public void setExample(String example) {
-        this.example = example;
-    }
-
-    abstract static class Builder<B extends BusinessRule.Builder<B>> {
+    public static abstract class Builder<T extends BusinessRule> {
 
         protected String code;
         protected String name;
@@ -153,75 +88,100 @@ public abstract class BusinessRule<B extends BusinessRule.Builder<B>> {
         protected String affectedColumn;
         protected String example;
 
-        public B setCode(String code) {
+        public Builder<T> setCode(String code) {
             this.code = code;
-            return (B) this;
+            return this;
         }
 
-        public B setName(String name) {
+        public Builder<T> setName(String name) {
             this.name = name;
-            return (B) this;
+            return this;
         }
 
-        public B setExplanation(String explanation) {
+        public Builder<T> setExplanation(String explanation) {
             this.explanation = explanation;
-            return (B) this;
+            return this;
         }
 
-        public B setMainTable(String mainTable) {
+        public Builder<T> setMainTable(String mainTable) {
             this.mainTable = mainTable;
-            return (B) this;
+            return this;
         }
 
-        public B setInsert(boolean insert) {
+        public Builder<T> setInsert(boolean insert) {
             this.insert = insert;
-            return (B) this;
+            return this;
         }
 
-        public B setUpdate(boolean update) {
+        public Builder<T> setUpdate(boolean update) {
             this.update = update;
-            return (B) this;
+            return this;
         }
 
-        public B setDelete(boolean delete) {
+        public Builder<T> setDelete(boolean delete) {
             this.delete = delete;
-            return (B) this;
+            return this;
         }
 
-        public B setTrigger(boolean trigger) {
+        public Builder<T> setTrigger(boolean trigger) {
             this.trigger = trigger;
-            return (B) this;
+            return this;
         }
 
-        public B setConstraint(boolean constraint) {
+        public Builder<T> setConstraint(boolean constraint) {
             this.constraint = constraint;
-            return (B) this;
+            return this;
         }
 
-        public B setGeneratedCode(String generatedCode) {
+        public Builder<T> setGeneratedCode(String generatedCode) {
             this.generatedCode = generatedCode;
-            return (B) this;
+            return this;
         }
 
-        public B setErrorCode(String errorCode) {
+        public Builder<T> setErrorCode(String errorCode) {
             this.errorCode = errorCode;
-            return (B) this;
+            return this;
         }
 
-        public Builder setAffectedColumn(String affectedColumn) {
+        public Builder<T> setAffectedColumn(String affectedColumn) {
             this.affectedColumn = affectedColumn;
             return this;
         }
 
-        public Builder setExample(String example) {
+        public Builder<T> setExample(String example) {
             this.example = example;
             return this;
         }
 
-        abstract BusinessRule<B> build();
-
+        public abstract T build();
 
     }
+        public static Builder<?> builder(){
+            return new Builder<BusinessRule>(){
+                @Override
+                public  BusinessRule build(){
+                    return new BusinessRule(this);
+                }
+            };
+        }
+
+        protected BusinessRule(Builder<?> builder){
+            this.code = builder.code;
+            this.name = builder.name;
+            this.explanation = builder.explanation;
+            this.mainTable = builder.mainTable;
+            this.insert = builder.insert;
+            this.update = builder.update;
+            this.delete = builder.delete;
+            this.trigger = builder.trigger;
+            this.constraint = builder.constraint;
+            this.generatedCode = builder.generatedCode;
+            this.errorCode = builder.errorCode;
+            this.affectedColumn = builder.affectedColumn;
+            this.example = builder.example;
+        }
+
+
 
     @Override
     public String toString() {
