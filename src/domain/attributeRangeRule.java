@@ -1,20 +1,12 @@
 package domain;
 
-public class attributeRangeRule<B extends attributeRangeRule.Builder<B>> extends BusinessRule<B> {
+public class attributeRangeRule extends BusinessRule {
 
     private int rangeStart;
     private int rangeEnd;
     private boolean insideRange;
 
-    public attributeRangeRule(Builder<B> builder) {
-        super(builder);
-        this.code = "ARNG";
-        this.explanation = "the parameter value must be in or out the specified range";
-        this.example = "all postal codes can participate, except 3700 up to 4100";
-        this.rangeStart = builder.rangeStart;
-        this.rangeEnd = builder.rangeEnd;
-        this.insideRange = builder.insideRange;
-    }
+
 
     public int getRangeStart() {
         return rangeStart;
@@ -28,32 +20,7 @@ public class attributeRangeRule<B extends attributeRangeRule.Builder<B>> extends
         return insideRange;
     }
 
-    public static class Builder<B extends attributeRangeRule.Builder<B>> extends BusinessRule.Builder<B> {
 
-        private int rangeStart;
-        private int rangeEnd;
-        private boolean insideRange;
-
-        public B setRangeStart(int rangeStart) {
-            this.rangeStart = rangeStart;
-            return (B) this;
-        }
-
-        public B setRangeEnd(int rangeEnd) {
-            this.rangeEnd = rangeEnd;
-            return (B) this;
-        }
-
-        public B setInsideRange(boolean insideRange) {
-            this.insideRange = insideRange;
-            return (B) this;
-        }
-
-        public attributeRangeRule<B> build() {
-            return new attributeRangeRule<>(this);
-        }
-
-    }
 
     @Override
     public String toString() {
@@ -62,6 +29,133 @@ public class attributeRangeRule<B extends attributeRangeRule.Builder<B>> extends
                 ", rangeEnd=" + rangeEnd + "\n" +
                 ", rangeStart=" + rangeStart + "\n"
                 + super.toString();
+    }
+
+    public static final class Builder {
+        protected String code;
+        protected String name;
+        protected String explanation;
+        protected String mainTable;
+        protected boolean insert;
+        protected boolean update;
+        protected boolean delete;
+        protected boolean trigger;
+        protected boolean constraint;
+        protected String generatedCode;
+        protected String errorCode;
+        protected String affectedColumn;
+        protected String example;
+        private int rangeStart;
+        private int rangeEnd;
+        private boolean insideRange;
+
+        private Builder() {
+        }
+
+        public static Builder anattributeRangeRule() {
+            return new Builder();
+        }
+
+        public Builder setCode(String code) {
+            this.code = code;
+            return this;
+        }
+
+        public Builder setRangeStart(int rangeStart) {
+            this.rangeStart = rangeStart;
+            return this;
+        }
+
+        public Builder setName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder setRangeEnd(int rangeEnd) {
+            this.rangeEnd = rangeEnd;
+            return this;
+        }
+
+        public Builder setExplanation(String explanation) {
+            this.explanation = explanation;
+            return this;
+        }
+
+        public Builder setInsideRange(boolean insideRange) {
+            this.insideRange = insideRange;
+            return this;
+        }
+
+        public Builder setMainTable(String mainTable) {
+            this.mainTable = mainTable;
+            return this;
+        }
+
+        public Builder setInsert(boolean insert) {
+            this.insert = insert;
+            return this;
+        }
+
+        public Builder setUpdate(boolean update) {
+            this.update = update;
+            return this;
+        }
+
+        public Builder setDelete(boolean delete) {
+            this.delete = delete;
+            return this;
+        }
+
+        public Builder setTrigger(boolean trigger) {
+            this.trigger = trigger;
+            return this;
+        }
+
+        public Builder setConstraint(boolean constraint) {
+            this.constraint = constraint;
+            return this;
+        }
+
+        public Builder setGeneratedCode(String generatedCode) {
+            this.generatedCode = generatedCode;
+            return this;
+        }
+
+        public Builder setErrorCode(String errorCode) {
+            this.errorCode = errorCode;
+            return this;
+        }
+
+        public Builder setAffectedColumn(String affectedColumn) {
+            this.affectedColumn = affectedColumn;
+            return this;
+        }
+
+        public Builder setExample(String example) {
+            this.example = example;
+            return this;
+        }
+
+        public attributeRangeRule build() {
+            attributeRangeRule attributeRangeRule = new attributeRangeRule();
+            attributeRangeRule.insert = this.insert;
+            attributeRangeRule.errorCode = this.errorCode;
+            attributeRangeRule.example = this.example;
+            attributeRangeRule.code = this.code;
+            attributeRangeRule.rangeStart = this.rangeStart;
+            attributeRangeRule.generatedCode = this.generatedCode;
+            attributeRangeRule.explanation = this.explanation;
+            attributeRangeRule.name = this.name;
+            attributeRangeRule.constraint = this.constraint;
+            attributeRangeRule.affectedColumn = this.affectedColumn;
+            attributeRangeRule.delete = this.delete;
+            attributeRangeRule.update = this.update;
+            attributeRangeRule.rangeEnd = this.rangeEnd;
+            attributeRangeRule.trigger = this.trigger;
+            attributeRangeRule.mainTable = this.mainTable;
+            attributeRangeRule.insideRange = this.insideRange;
+            return attributeRangeRule;
+        }
     }
 }
 

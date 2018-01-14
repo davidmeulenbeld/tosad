@@ -1,20 +1,13 @@
 package domain;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
-public class attributeListRule <B extends attributeListRule.Builder<B>> extends BusinessRule<B>{
+public class attributeListRule  extends BusinessRule{
     private List list ;
     private boolean inList;
 
-    public attributeListRule(Builder<B> builder){
-        super(builder);
-        this.code="ALIS";
-        this.explanation="the parameter value must be equal or unequal to a value of the given list";
-        this.example="status of delivery needs to be one of these: 'registered','accepted','sent','delivered'";
-        this.list =builder.list;
-        this.inList=builder.inList;
-    }
+
 
     public List getList() {
         return list;
@@ -24,24 +17,124 @@ public class attributeListRule <B extends attributeListRule.Builder<B>> extends 
         return inList;
     }
 
-    public static class Builder<B extends attributeListRule.Builder<B>> extends BusinessRule.Builder<B> {
 
-        private List list;
+    public static final class Builder {
+        protected String code;
+        protected String name;
+        protected String explanation;
+        protected String mainTable;
+        protected boolean insert;
+        protected boolean update;
+        protected boolean delete;
+        protected boolean trigger;
+        protected boolean constraint;
+        protected String generatedCode;
+        protected String errorCode;
+        protected String affectedColumn;
+        protected String example;
+        private List list ;
         private boolean inList;
 
-        public B setList(List list) {
+        private Builder() {
+        }
+
+        public static Builder buildAttributeListRule() {
+            return new Builder();
+        }
+
+        public Builder setCode(String code) {
+            this.code = code;
+            return this;
+        }
+
+        public Builder setName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder setList(List list) {
             this.list = list;
-            return (B)this;
+            return this;
         }
 
-        public B setInList(boolean value) {
+        public Builder setExplanation(String explanation) {
+            this.explanation = explanation;
+            return this;
+        }
+
+        public Builder setInList(boolean inList) {
             this.inList = inList;
-            return (B) this;
+            return this;
         }
 
-        public attributeListRule<B> build() {
-            return new attributeListRule<>(this);
+        public Builder setMainTable(String mainTable) {
+            this.mainTable = mainTable;
+            return this;
         }
 
+        public Builder setInsert(boolean insert) {
+            this.insert = insert;
+            return this;
+        }
+
+        public Builder setUpdate(boolean update) {
+            this.update = update;
+            return this;
+        }
+
+        public Builder setDelete(boolean delete) {
+            this.delete = delete;
+            return this;
+        }
+
+        public Builder setTrigger(boolean trigger) {
+            this.trigger = trigger;
+            return this;
+        }
+
+        public Builder setConstraint(boolean constraint) {
+            this.constraint = constraint;
+            return this;
+        }
+
+        public Builder setGeneratedCode(String generatedCode) {
+            this.generatedCode = generatedCode;
+            return this;
+        }
+
+        public Builder setErrorCode(String errorCode) {
+            this.errorCode = errorCode;
+            return this;
+        }
+
+        public Builder setAffectedColumn(String affectedColumn) {
+            this.affectedColumn = affectedColumn;
+            return this;
+        }
+
+        public Builder setExample(String example) {
+            this.example = example;
+            return this;
+        }
+
+        public attributeListRule build() {
+            attributeListRule attributeListRule = new attributeListRule();
+            attributeListRule.insert = this.insert;
+            attributeListRule.inList = this.inList;
+            attributeListRule.errorCode = this.errorCode;
+            attributeListRule.example = this.example;
+            attributeListRule.code = this.code;
+            attributeListRule.list = this.list;
+            attributeListRule.generatedCode = this.generatedCode;
+            attributeListRule.explanation = this.explanation;
+            attributeListRule.name = this.name;
+            attributeListRule.constraint = this.constraint;
+            attributeListRule.affectedColumn = this.affectedColumn;
+            attributeListRule.delete = this.delete;
+            attributeListRule.update = this.update;
+            attributeListRule.trigger = this.trigger;
+            attributeListRule.mainTable = this.mainTable;
+            return attributeListRule;
+        }
     }
 }
