@@ -10,7 +10,16 @@ public class Test {
         generateAttributeCompareRule gacr = new generateAttributeCompareRule();
 
 
-        attributeCompareRule ac = buildAttributeCompareRule().setName("gerry").setInsert(false).setDelete(true).setUpdate(true).setMainTable("testt").setAffectedColumn("test").build();
+        attributeCompareRule ac = buildAttributeCompareRule()
+                .setName("gerry")
+                .setInsert(false)
+                .setDelete(true)
+                .setUpdate(true)
+                .setMainTable("testt")
+                .setAffectedColumn("test")
+                .setValue(20)
+                .setOperator(">")
+                .setErrorCode("errorcode").build();
 
         String result = gacr.createAttributeCompareRule(ac);
 
