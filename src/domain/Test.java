@@ -21,9 +21,12 @@ public class Test {
                 .setOperator(">")
                 .setErrorCode("errorcode").build();
 
-        String result = gacr.createAttributeCompareRuleTrigger(ac);
-
-        System.out.println(result);
+        String trigger = gacr.createAttributeCompareRuleTrigger(ac);
+        String constraint = gacr.createAttributeCompareRuleConstraint(ac);
+        System.out.println("trigger------------------------------");
+        System.out.println(trigger);
+        System.out.println("constraint---------------------------");
+        System.out.println(constraint);
 
     }
 }
