@@ -19,8 +19,8 @@ public class Test {
                 .setAffectedColumn("test")
                 .setValue(20)
                 .setOperator(">")
-                .setConstraint(true)
-                .setTrigger(false)
+                .setConstraint(false)
+                .setTrigger(true)
                 .setErrorCode("errorcode").build();
 
         String trigger = gacr.createAttributeCompareRuleTrigger(ac);

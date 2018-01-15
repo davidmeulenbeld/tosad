@@ -1,11 +1,11 @@
 package controller;
 
-import domain.BusinessRule;
+
 import domain.attributeCompareRule;
-import controller.getTriggerWhenString;
+
 
 public class generateAttributeCompareRule {
-    getTriggerWhenString gtws = new getTriggerWhenString();
+    generalControllerFunctions gtws = new generalControllerFunctions();
 
     public String decideTypeGeneratedAttrComp(attributeCompareRule compareRule){
         String result = "";
