@@ -1,15 +1,16 @@
 package domain;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class attributeListRule  extends BusinessRule{
-    private List list ;
+    private ArrayList<String> list ;
     private boolean inList;
 
 
 
-    public List getList() {
+    public ArrayList<String> getList() {
         return list;
     }
 
@@ -17,7 +18,7 @@ public class attributeListRule  extends BusinessRule{
         return inList;
     }
 
-    public void setList(List list) {
+    public void setList(ArrayList list) {
         this.list = list;
     }
 
@@ -39,7 +40,7 @@ public class attributeListRule  extends BusinessRule{
         protected String errorCode;
         protected String affectedColumn;
         protected String example;
-        private List list ;
+        private ArrayList list ;
         private boolean inList;
 
         private Builder() {
@@ -59,7 +60,7 @@ public class attributeListRule  extends BusinessRule{
             return this;
         }
 
-        public Builder setList(List list) {
+        public Builder setList(ArrayList<String> list) {
             this.list = list;
             return this;
         }
