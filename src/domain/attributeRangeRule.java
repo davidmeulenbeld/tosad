@@ -20,7 +20,17 @@ public class attributeRangeRule extends BusinessRule {
         return insideRange;
     }
 
+    public void setRangeStart(int rangeStart) {
+        this.rangeStart = rangeStart;
+    }
 
+    public void setRangeEnd(int rangeEnd) {
+        this.rangeEnd = rangeEnd;
+    }
+
+    public void setInsideRange(boolean insideRange) {
+        this.insideRange = insideRange;
+    }
 
     @Override
     public String toString() {

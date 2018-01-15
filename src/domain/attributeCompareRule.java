@@ -14,10 +14,13 @@ public class attributeCompareRule  extends BusinessRule {
         return value;
     }
 
+    public void setOperator(String operator) {
+        this.operator = operator;
+    }
 
-
-
-
+    public void setValue(int value) {
+        this.value = value;
+    }
 
     @Override
     public String toString() {

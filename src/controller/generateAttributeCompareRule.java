@@ -8,7 +8,7 @@ public class generateAttributeCompareRule {
     getTriggerWhenString gtws = new getTriggerWhenString();
 
 
-    public String createAttributeCompareRule(attributeCompareRule compareRule){
+    public String createAttributeCompareRuleTrigger(attributeCompareRule compareRule){
         String basestring = "Create or replace trigger ";
         basestring += compareRule.getName() + "\n"
 
@@ -24,6 +24,9 @@ public class generateAttributeCompareRule {
 
         return basestring;
     }
+    public String createAttributeCompareRuleConstraint(attributeCompareRule compareRule){
 
+
+    }
 
 }

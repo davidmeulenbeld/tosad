@@ -72,7 +72,57 @@ public  class BusinessRule {
     }
 
 
+    public void setCode(String code) {
+        this.code = code;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setExplanation(String explanation) {
+        this.explanation = explanation;
+    }
+
+    public void setMainTable(String mainTable) {
+        this.mainTable = mainTable;
+    }
+
+    public void setInsert(boolean insert) {
+        this.insert = insert;
+    }
+
+    public void setUpdate(boolean update) {
+        this.update = update;
+    }
+
+    public void setDelete(boolean delete) {
+        this.delete = delete;
+    }
+
+    public void setTrigger(boolean trigger) {
+        this.trigger = trigger;
+    }
+
+    public void setConstraint(boolean constraint) {
+        this.constraint = constraint;
+    }
+
+    public void setGeneratedCode(String generatedCode) {
+        this.generatedCode = generatedCode;
+    }
+
+    public void setErrorCode(String errorCode) {
+        this.errorCode = errorCode;
+    }
+
+    public void setAffectedColumn(String affectedColumn) {
+        this.affectedColumn = affectedColumn;
+    }
+
+    public void setExample(String example) {
+        this.example = example;
+    }
 
     @Override
     public String toString() {

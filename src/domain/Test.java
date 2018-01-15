@@ -21,7 +21,7 @@ public class Test {
                 .setOperator(">")
                 .setErrorCode("errorcode").build();
 
-        String result = gacr.createAttributeCompareRule(ac);
+        String result = gacr.createAttributeCompareRuleTrigger(ac);
 
         System.out.println(result);
 

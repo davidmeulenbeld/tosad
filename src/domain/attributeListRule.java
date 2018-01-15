@@ -17,6 +17,13 @@ public class attributeListRule  extends BusinessRule{
         return inList;
     }
 
+    public void setList(List list) {
+        this.list = list;
+    }
+
+    public void setInList(boolean inList) {
+        this.inList = inList;
+    }
 
     public static final class Builder {
         protected String code;
