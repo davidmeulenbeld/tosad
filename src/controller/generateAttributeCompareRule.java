@@ -7,7 +7,17 @@ import controller.getTriggerWhenString;
 public class generateAttributeCompareRule {
     getTriggerWhenString gtws = new getTriggerWhenString();
 
+    public String decideTypeGeneratedAttrComp(attributeCompareRule compareRule){
+        String result = "";
+        if(compareRule.isConstraint()){
+            result = createAttributeCompareRuleConstraint(compareRule);
+        }
+        if(compareRule.isTrigger()){
+            result = createAttributeCompareRuleTrigger(compareRule);
 
+        }
+        return result;
+    }
     public String createAttributeCompareRuleTrigger(attributeCompareRule compareRule){
         String basestring = "Create or replace trigger ";
         basestring += compareRule.getName() + "\n"

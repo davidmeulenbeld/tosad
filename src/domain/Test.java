@@ -19,14 +19,19 @@ public class Test {
                 .setAffectedColumn("test")
                 .setValue(20)
                 .setOperator(">")
+                .setConstraint(true)
+                .setTrigger(false)
                 .setErrorCode("errorcode").build();
 
         String trigger = gacr.createAttributeCompareRuleTrigger(ac);
         String constraint = gacr.createAttributeCompareRuleConstraint(ac);
+        String decidedtype = gacr.decideTypeGeneratedAttrComp(ac);
         System.out.println("trigger------------------------------");
         System.out.println(trigger);
         System.out.println("constraint---------------------------");
         System.out.println(constraint);
+        System.out.println("decided-------------------------------");
+        System.out.println(decidedtype);
 
     }
 }
