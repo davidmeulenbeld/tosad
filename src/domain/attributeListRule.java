@@ -4,10 +4,9 @@ package domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class attributeListRule  extends BusinessRule{
-    private ArrayList<String> list ;
+public class attributeListRule extends BusinessRule {
+    private ArrayList<String> list;
     private boolean inList;
-
 
 
     public ArrayList<String> getList() {
@@ -40,7 +39,7 @@ public class attributeListRule  extends BusinessRule{
         protected String errorCode;
         protected String affectedColumn;
         protected String example;
-        private ArrayList list ;
+        private ArrayList list;
         private boolean inList;
 
         private Builder() {

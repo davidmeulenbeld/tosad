@@ -1,9 +1,8 @@
 package domain;
 
-public class attributeCompareRule  extends BusinessRule {
+public class attributeCompareRule extends BusinessRule {
     private String operator;
     private int value;
-
 
 
     public String getOperator() {
@@ -27,7 +26,7 @@ public class attributeCompareRule  extends BusinessRule {
         return "attributeCompareRule{" + "\n" +
                 "operator='" + operator + '\'' + "\n" +
                 ", value=" + value + "\n" +
-                 super.toString();
+                super.toString();
     }
 
     public static final class Builder {

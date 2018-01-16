@@ -7,7 +7,6 @@ public class attributeRangeRule extends BusinessRule {
     private boolean insideRange;
 
 
-
     public int getRangeStart() {
         return rangeStart;
     }

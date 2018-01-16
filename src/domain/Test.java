@@ -1,7 +1,8 @@
 package domain;
 
-import  controller.generateAttributeCompareRule;
-import  controller.generateAttributeListrule;
+import controller.generateAttributeCompareRule;
+import controller.generateAttributeListrule;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +11,7 @@ import static domain.attributeListRule.Builder.buildAttributeListRule;
 
 public class Test {
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
         generateAttributeCompareRule gacr = new generateAttributeCompareRule();
         generateAttributeListrule gal = new generateAttributeListrule();
         ArrayList list = new ArrayList();
@@ -51,7 +52,7 @@ public class Test {
         System.out.println("constraint---------------------------");
         System.out.println(constraint);
         System.out.println("decided-------------------------------");
-       // System.out.println(decidedtype);
+        // System.out.println(decidedtype);
 
     }
 }

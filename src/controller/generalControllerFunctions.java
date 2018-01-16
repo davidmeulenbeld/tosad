@@ -2,31 +2,31 @@ package controller;
 
 public class generalControllerFunctions {
 
-    public String generateTriggerWhenString (Boolean insert, Boolean delete, Boolean update,String tablename , String affectedColumn){
+    public String generateTriggerWhenString(Boolean insert, Boolean delete, Boolean update, String tablename, String affectedColumn) {
         String result = "before ";
         int counter = 0;
 
-        if ( insert) {
+        if (insert) {
             result += "insert ";
-            counter ++;
+            counter++;
         }
-        if (delete){
-            if (counter > 0){
+        if (delete) {
+            if (counter > 0) {
                 result += "or ";
 
             }
 
-                result += "delete ";
-                counter++;
+            result += "delete ";
+            counter++;
         }
-        if (update){
-            if (counter > 0){
+        if (update) {
+            if (counter > 0) {
                 result += "or ";
 
             }
-            result += "update of "+ affectedColumn;
+            result += "update of " + affectedColumn;
         }
-        result += " on "+ tablename;
+        result += " on " + tablename;
 
         return result;
     }

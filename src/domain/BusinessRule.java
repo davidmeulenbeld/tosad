@@ -1,6 +1,6 @@
 package domain;
 
-public  class BusinessRule {
+public class BusinessRule {
 
     protected String code;
     protected String name;
@@ -15,8 +15,6 @@ public  class BusinessRule {
     protected String errorCode;
     protected String affectedColumn;
     protected String example;
-
-
 
 
     public String getCode() {
@@ -142,7 +140,6 @@ public  class BusinessRule {
                         ", example='" + example + '\'' + "\n" +
                         '}';
     }
-
 
 
 }
