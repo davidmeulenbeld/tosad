@@ -4,9 +4,23 @@ package controller;
 import domain.attributeCompareRule;
 
 
+/**
+ * The controller Generate attribute compare rule.
+ */
 public class generateAttributeCompareRule {
+    /**
+     * declaration of general control functions
+     */
     generalControllerFunctions gtws = new generalControllerFunctions();
 
+    /**
+     * Decide type generated of  attribute compare string.
+     *
+     * returns object
+     * for now returns a string
+     * @param compareRule the compare rule
+     * @return compareRule
+     */
     public String decideTypeGeneratedAttrComp(attributeCompareRule compareRule) {
         String result = "";
         if (compareRule.isConstraint()) {
@@ -19,6 +33,12 @@ public class generateAttributeCompareRule {
         return result;
     }
 
+    /**
+     * Create attribute compare rule trigger.
+     *
+     * @param compareRule the compare rule
+     * @return generated code
+     */
     public String createAttributeCompareRuleTrigger(attributeCompareRule compareRule) {
         String basestring = "Create or replace trigger ";
         basestring += compareRule.getName() + "\n"
@@ -35,6 +55,12 @@ public class generateAttributeCompareRule {
         return basestring;
     }
 
+    /**
+     * Create attribute compare rule constraint .
+     *
+     * @param compareRule the compare rule
+     * @return generated code
+     */
     public String createAttributeCompareRuleConstraint(attributeCompareRule compareRule) {
 
         String basestring = "alter table ";

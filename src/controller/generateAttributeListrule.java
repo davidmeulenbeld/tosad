@@ -5,10 +5,25 @@ import domain.attributeListRule;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The controller Generate attribute listrule.
+ */
 public class generateAttributeListrule {
 
-    generalControllerFunctions gtws = new generalControllerFunctions();
+    /**
+     * declaration of general control functions
+     */
+   private  generalControllerFunctions gtws = new generalControllerFunctions();
 
+    /**
+     * Decide type generated of attribute list rule.
+     *
+     * returns object
+     * for now returns a string
+     *
+     * @param listRule the list rule
+     * @return listRule
+     */
     public String decideTypeGeneratedAttrList(attributeListRule listRule) {
         String result = "";
         if (listRule.isConstraint()) {
@@ -21,6 +36,12 @@ public class generateAttributeListrule {
         return result;
     }
 
+    /**
+     * Create attribute list rule trigger .
+     *
+     * @param listRule the list rule
+     * @return generated code
+     */
     public String createAttributeListRuleTrigger(attributeListRule listRule) {
         String basestring = "Create or replace trigger ";
         basestring += listRule.getName() + "\n"
@@ -33,6 +54,12 @@ public class generateAttributeListrule {
         return basestring;
     }
 
+    /**
+     * Create attribute list rule constraint .
+     *
+     * @param listRule the list rule
+     * @return generated code
+     */
     public String createAttributeListRuleConstraint(attributeListRule listRule) {
         String basestring = "alter table ";
 
@@ -52,6 +79,12 @@ public class generateAttributeListrule {
     }
 
 
+    /**
+     * Generates a string of a list for triggers .
+     *
+     * @param listRule the list rule
+     * @return the string
+     */
     public String generateStringfromlistForTrigger(attributeListRule listRule) {
         ArrayList<String> list = listRule.getList();
         String basestring = "if ";
@@ -75,6 +108,12 @@ public class generateAttributeListrule {
 
     }
 
+    /**
+     * Generate a string of a list for constraints .
+     *
+     * @param listRule the list rule
+     * @return the string
+     */
     public String generateStringfromlistForConstraint(attributeListRule listRule) {
         String basestring = "";
         ArrayList<String> list = listRule.getList();
