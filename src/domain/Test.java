@@ -2,6 +2,7 @@ package domain;
 
 import controller.generateAttributeCompareRule;
 import controller.generateAttributeListrule;
+import services.BusinessRuleService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +54,11 @@ public class Test {
         System.out.println(constraint);
         System.out.println("decided-------------------------------");
         // System.out.println(decidedtype);
+
+
+        BusinessRuleService brs = new BusinessRuleService();
+
+        brs.getTableNames();
 
     }
 }
