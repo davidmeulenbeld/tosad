@@ -1,45 +1,73 @@
 package controller;
 
-import domain.BusinessRule;
+
 import domain.attributeCompareRule;
-import controller.getTriggerWhenString;
 
+
+/**
+ * The controller Generate attribute compare rule.
+ */
 public class generateAttributeCompareRule {
-    getTriggerWhenString gtws = new getTriggerWhenString();
+    /**
+     * declaration of general control functions
+     */
+    generalControllerFunctions gtws = new generalControllerFunctions();
 
-    public String decideTypeGeneratedAttrComp(attributeCompareRule compareRule){
+    /**
+     * Decide type generated of  attribute compare string.
+     *
+     * returns object
+     * for now returns a string
+     * @param compareRule the compare rule
+     * @return compareRule
+     */
+    public String decideTypeGeneratedAttrComp(attributeCompareRule compareRule) {
         String result = "";
-        if(compareRule.isConstraint()){
+        if (compareRule.isConstraint()) {
             result = createAttributeCompareRuleConstraint(compareRule);
         }
-        if(compareRule.isTrigger()){
+        if (compareRule.isTrigger()) {
             result = createAttributeCompareRuleTrigger(compareRule);
 
         }
         return result;
     }
-    public String createAttributeCompareRuleTrigger(attributeCompareRule compareRule){
+
+    /**
+     * Create attribute compare rule trigger.
+     *
+     * @param compareRule the compare rule
+     * @return generated code
+     */
+    public String createAttributeCompareRuleTrigger(attributeCompareRule compareRule) {
         String basestring = "Create or replace trigger ";
         basestring += compareRule.getName() + "\n"
-                + gtws.generateTriggerWhenString(compareRule.isInsert(),compareRule.isDelete(),compareRule.isUpdate(),compareRule.getMainTable(),compareRule.getAffectedColumn());
+                + gtws.generateTriggerWhenString(compareRule.isInsert(), compareRule.isDelete(), compareRule.isUpdate(), compareRule.getMainTable(), compareRule.getAffectedColumn());
 
-        basestring += "declare" + "\n"+
-                "value number := "+ compareRule.getValue()+";"+"\n";
-        basestring += "begin" + "\n"+
-                "if "+ compareRule.getAffectedColumn()+ " "+ compareRule.getOperator() + " value then"+" \n";
-        basestring += "raise_application_error(-20010,'"+compareRule.getErrorCode()+"');"+"\n"
-                + "end if;"+ "\n"
+        basestring += "declare" + "\n" +
+                "value number := " + compareRule.getValue() + ";" + "\n";
+        basestring += "begin" + "\n" +
+                "if " + compareRule.getAffectedColumn() + " " + compareRule.getOperator() + " value then" + " \n";
+        basestring += "raise_application_error(-20010,'" + compareRule.getErrorCode() + "');" + "\n"
+                + "end if;" + "\n"
                 + "end;";
 
         return basestring;
     }
-    public String createAttributeCompareRuleConstraint(attributeCompareRule compareRule){
+
+    /**
+     * Create attribute compare rule constraint .
+     *
+     * @param compareRule the compare rule
+     * @return generated code
+     */
+    public String createAttributeCompareRuleConstraint(attributeCompareRule compareRule) {
 
         String basestring = "alter table ";
 
-        basestring += compareRule.getMainTable()+ "\n";
-        basestring += "add constraint "+ compareRule.getName()+ " check " + compareRule.getAffectedColumn()+ " "
-                +compareRule.getOperator()+" "+compareRule.getValue();
+        basestring += compareRule.getMainTable() + "\n";
+        basestring += "add constraint " + compareRule.getName() + " check " + compareRule.getAffectedColumn() + " "
+                + compareRule.getOperator() + " " + compareRule.getValue();
         return basestring;
 
 
