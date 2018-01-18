@@ -66,11 +66,10 @@ public class attributeRangeRule extends BusinessRule {
 
         //for variable information see corresponding class and businessrule
 
-        private String code;
 
         private String name;
 
-        private String explanation;
+
 
         private String mainTable;
 
@@ -90,7 +89,7 @@ public class attributeRangeRule extends BusinessRule {
 
         private String affectedColumn;
 
-        private String example;
+     ;
         private int rangeStart;
         private int rangeEnd;
         private boolean insideRange;
@@ -111,10 +110,6 @@ public class attributeRangeRule extends BusinessRule {
         //builder setters
         // sets a piece of the complicated instance
 
-        public Builder setCode(String code) {
-            this.code = code;
-            return this;
-        }
 
 
         public Builder setRangeStart(int rangeStart) {
@@ -135,10 +130,7 @@ public class attributeRangeRule extends BusinessRule {
         }
 
 
-        public Builder setExplanation(String explanation) {
-            this.explanation = explanation;
-            return this;
-        }
+
 
         public Builder setInsideRange(boolean insideRange) {
             this.insideRange = insideRange;
@@ -200,10 +192,7 @@ public class attributeRangeRule extends BusinessRule {
         }
 
 
-        public Builder setExample(String example) {
-            this.example = example;
-            return this;
-        }
+
 
         /**
          * Build attribute range rule.
@@ -214,11 +203,11 @@ public class attributeRangeRule extends BusinessRule {
             attributeRangeRule attributeRangeRule = new attributeRangeRule();
             attributeRangeRule.insert = this.insert;
             attributeRangeRule.errorCode = this.errorCode;
-            attributeRangeRule.example = this.example;
-            attributeRangeRule.code = this.code;
+            attributeRangeRule.example = "grade must be between 1 and 10";
+            attributeRangeRule.code = "ARNG";
             attributeRangeRule.rangeStart = this.rangeStart;
             attributeRangeRule.generatedCode = this.generatedCode;
-            attributeRangeRule.explanation = this.explanation;
+            attributeRangeRule.explanation = "The affected column must be in or out of the range";
             attributeRangeRule.name = this.name;
             attributeRangeRule.constraint = this.constraint;
             attributeRangeRule.affectedColumn = this.affectedColumn;

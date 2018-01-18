@@ -53,11 +53,8 @@ public class attributeListRule extends BusinessRule {
         //for variable information see corresponding class and businessrule
 
 
-        private String code;
-
         private String name;
 
-        private String explanation;
 
         private String mainTable;
 
@@ -77,7 +74,6 @@ public class attributeListRule extends BusinessRule {
 
         private String affectedColumn;
 
-        private String example;
         private ArrayList<String> list;
         private boolean inList;
 
@@ -98,10 +94,7 @@ public class attributeListRule extends BusinessRule {
         // sets a piece of the complicated instance
 
 
-        public Builder setCode(String code) {
-            this.code = code;
-            return this;
-        }
+
 
 
         public Builder setName(String name) {
@@ -115,11 +108,6 @@ public class attributeListRule extends BusinessRule {
             return this;
         }
 
-
-        public Builder setExplanation(String explanation) {
-            this.explanation = explanation;
-            return this;
-        }
 
 
         public Builder setInList(boolean inList) {
@@ -182,10 +170,7 @@ public class attributeListRule extends BusinessRule {
         }
 
 
-        public Builder setExample(String example) {
-            this.example = example;
-            return this;
-        }
+
 
         /**
          * Build attribute list rule.
@@ -197,11 +182,11 @@ public class attributeListRule extends BusinessRule {
             attributeListRule.insert = this.insert;
             attributeListRule.inList = this.inList;
             attributeListRule.errorCode = this.errorCode;
-            attributeListRule.example = this.example;
-            attributeListRule.code = this.code;
+            attributeListRule.example = "status must be equal to 'registered','accepted' or 'sent'";
+            attributeListRule.code = "ALIS";
             attributeListRule.list = this.list;
             attributeListRule.generatedCode = this.generatedCode;
-            attributeListRule.explanation = this.explanation;
+            attributeListRule.explanation = "The attribute value must be in or out of the list given.";
             attributeListRule.name = this.name;
             attributeListRule.constraint = this.constraint;
             attributeListRule.affectedColumn = this.affectedColumn;

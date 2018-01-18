@@ -21,7 +21,7 @@ public class Test {
         list.add("c");
         list.add("d");
         attributeCompareRule ac = buildAttributeCompareRule()
-                .setName("geerry")
+                .setName("geery")
                 .setInsert(false)
                 .setDelete(true)
                 .setUpdate(true)

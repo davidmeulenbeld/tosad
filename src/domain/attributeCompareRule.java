@@ -58,11 +58,7 @@ public class attributeCompareRule extends BusinessRule {
         //for variable information see corresponding class and businessrule
 
 
-        private String code;
-
         private String name;
-
-        private String explanation;
 
         private String mainTable;
 
@@ -82,7 +78,6 @@ public class attributeCompareRule extends BusinessRule {
 
         private String affectedColumn;
 
-        private String example;
         private String operator;
         private int value;
 
@@ -103,10 +98,6 @@ public class attributeCompareRule extends BusinessRule {
 
 
 
-        public Builder setCode(String code) {
-            this.code = code;
-            return this;
-        }
 
         public Builder setOperator(String operator) {
             this.operator = operator;
@@ -125,11 +116,6 @@ public class attributeCompareRule extends BusinessRule {
             return this;
         }
 
-
-        public Builder setExplanation(String explanation) {
-            this.explanation = explanation;
-            return this;
-        }
 
 
         public Builder setMainTable(String mainTable) {
@@ -167,12 +153,10 @@ public class attributeCompareRule extends BusinessRule {
             return this;
         }
 
-
         public Builder setGeneratedCode(String generatedCode) {
             this.generatedCode = generatedCode;
             return this;
         }
-
 
         public Builder setErrorCode(String errorCode) {
             this.errorCode = errorCode;
@@ -186,11 +170,6 @@ public class attributeCompareRule extends BusinessRule {
         }
 
 
-        public Builder setExample(String example) {
-            this.example = example;
-            return this;
-        }
-
         /**
          * Build attribute compare rule.
          *
@@ -201,11 +180,14 @@ public class attributeCompareRule extends BusinessRule {
             attributeCompareRule.insert = this.insert;
             attributeCompareRule.operator = this.operator;
             attributeCompareRule.errorCode = this.errorCode;
-            attributeCompareRule.example = this.example;
-            attributeCompareRule.code = this.code;
+            attributeCompareRule.example = "Delivery.amount must be bigger than 1.";
+
+            attributeCompareRule.code = "ACMP";
             attributeCompareRule.generatedCode = this.generatedCode;
             attributeCompareRule.value = this.value;
-            attributeCompareRule.explanation = this.explanation;
+            attributeCompareRule.explanation = "The attribute value must be equal to," +
+                    " bigger than, smaller than," +
+                    " equal to or bigger, equal to or smaller than given value.";
             attributeCompareRule.name = this.name;
             attributeCompareRule.constraint = this.constraint;
             attributeCompareRule.affectedColumn = this.affectedColumn;
