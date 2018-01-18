@@ -1,6 +1,6 @@
 package domain;
 
-public class attributeOtherRule extends BusinessRule{
+public class OtherRule extends BusinessRule{
 
     private String sql ;
 
@@ -114,23 +114,23 @@ public class attributeOtherRule extends BusinessRule{
             return this;
         }
 
-        public attributeOtherRule build() {
-            attributeOtherRule attributeOtherRule = new attributeOtherRule();
-            attributeOtherRule.setSql(sql);
-            attributeOtherRule.setCode(code);
-            attributeOtherRule.setName(name);
-            attributeOtherRule.setExplanation(explanation);
-            attributeOtherRule.setMainTable(mainTable);
-            attributeOtherRule.setInsert(insert);
-            attributeOtherRule.setUpdate(update);
-            attributeOtherRule.setDelete(delete);
-            attributeOtherRule.setTrigger(trigger);
-            attributeOtherRule.setConstraint(constraint);
-            attributeOtherRule.setGeneratedCode(generatedCode);
-            attributeOtherRule.setErrorCode(errorCode);
-            attributeOtherRule.setAffectedColumn(affectedColumn);
-            attributeOtherRule.setExample(example);
-            return attributeOtherRule;
+        public OtherRule build() {
+            OtherRule OtherRule = new OtherRule();
+            OtherRule.setSql(sql);
+            OtherRule.setCode(code);
+            OtherRule.setName(name);
+            OtherRule.setExplanation(explanation);
+            OtherRule.setMainTable(mainTable);
+            OtherRule.setInsert(insert);
+            OtherRule.setUpdate(update);
+            OtherRule.setDelete(delete);
+            OtherRule.setTrigger(trigger);
+            OtherRule.setConstraint(constraint);
+            OtherRule.setGeneratedCode(generatedCode);
+            OtherRule.setErrorCode(errorCode);
+            OtherRule.setAffectedColumn(affectedColumn);
+            OtherRule.setExample(example);
+            return OtherRule;
         }
     }
 }
