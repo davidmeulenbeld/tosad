@@ -40,19 +40,19 @@ public class interEntityCompareRule extends BusinessRule  {
     }
 
     public static final class Builder {
-        protected String code;
-        protected String name;
-        protected String explanation;
-        protected String mainTable;
-        protected boolean insert;
-        protected boolean update;
-        protected boolean delete;
-        protected boolean trigger;
-        protected boolean constraint;
-        protected String generatedCode;
-        protected String errorCode;
-        protected String affectedColumn;
-        protected String example;
+        private String code;
+        private String name;
+        private String explanation;
+        private String mainTable;
+        private boolean insert;
+        private boolean update;
+        private boolean delete;
+        private boolean trigger;
+        private boolean constraint;
+        private String generatedCode;
+        private String errorCode;
+        private String affectedColumn;
+        private String example;
         private String otherTable;
         private String otherColumn;
         private String operator;
@@ -148,10 +148,10 @@ public class interEntityCompareRule extends BusinessRule  {
             interEntityCompareRule interEntityCompareRule = new interEntityCompareRule();
             interEntityCompareRule.setOtherTable(otherTable);
             interEntityCompareRule.setOtherColumn(otherColumn);
-            interEntityCompareRule.setCode(code);
+            interEntityCompareRule.setCode("ICMP");
             interEntityCompareRule.setOperator(operator);
             interEntityCompareRule.setName(name);
-            interEntityCompareRule.setExplanation(explanation);
+            interEntityCompareRule.setExplanation("The attribute value must be equal to, bigger,smaller,equal or bigger than or equal or smaller than an attribute in another table");
             interEntityCompareRule.setMainTable(mainTable);
             interEntityCompareRule.setInsert(insert);
             interEntityCompareRule.setUpdate(update);
@@ -161,7 +161,7 @@ public class interEntityCompareRule extends BusinessRule  {
             interEntityCompareRule.setGeneratedCode(generatedCode);
             interEntityCompareRule.setErrorCode(errorCode);
             interEntityCompareRule.setAffectedColumn(affectedColumn);
-            interEntityCompareRule.setExample(example);
+            interEntityCompareRule.setExample("delivery.registrydate must be equal to order.registrydate");
             return interEntityCompareRule;
         }
     }
