@@ -28,7 +28,7 @@ public class attributeListRule extends BusinessRule {
     //set the corresponding variable
 
 
-    public void setList(ArrayList list) {
+    public void setList(ArrayList<String> list) {
         this.list = list;
     }
 
@@ -78,7 +78,7 @@ public class attributeListRule extends BusinessRule {
         private String affectedColumn;
 
         private String example;
-        private ArrayList list;
+        private ArrayList<String> list;
         private boolean inList;
 
         private Builder() {
