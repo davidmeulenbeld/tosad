@@ -3,6 +3,7 @@ package domain;
 public class tupleCompareRule extends BusinessRule{
 
     private String secondcolumn;
+
     private String operator;
 
     public String getSecondcolumn() {
@@ -22,10 +23,14 @@ public class tupleCompareRule extends BusinessRule{
         this.operator = operator;
     }
 
+
+
+
     @Override
     public String toString() {
         return "tupleCompareRule{" +
                 "operator='" + operator + '\'' +
+
                 ", secondcolumn='" + secondcolumn + '\'' +
                 "} " + super.toString();
     }
@@ -45,6 +50,7 @@ public class tupleCompareRule extends BusinessRule{
         protected String affectedColumn;
         protected String example;
         private String secondcolumn;
+
         private String operator;
 
         private Builder() {
@@ -129,6 +135,8 @@ public class tupleCompareRule extends BusinessRule{
             return this;
         }
 
+
+
         public tupleCompareRule build() {
             tupleCompareRule tupleCompareRule = new tupleCompareRule();
             tupleCompareRule.setSecondcolumn(secondcolumn);
@@ -146,6 +154,7 @@ public class tupleCompareRule extends BusinessRule{
             tupleCompareRule.setErrorCode(errorCode);
             tupleCompareRule.setAffectedColumn(affectedColumn);
             tupleCompareRule.setExample(example);
+
             return tupleCompareRule;
         }
     }

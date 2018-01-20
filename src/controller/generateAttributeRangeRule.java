@@ -5,7 +5,7 @@ import domain.attributeRangeRule;
 
 public class generateAttributeRangeRule {
 
-    generalControllerFunctions gtws = new generalControllerFunctions();
+    private generalControllerFunctions gtws = new generalControllerFunctions();
 
     public attributeRangeRule decideTypeGeneratedAttrRang(attributeRangeRule rangeRule) {
         String result = "";

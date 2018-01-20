@@ -11,7 +11,7 @@ public class generateAttributeCompareRule {
     /**
      * declaration of general control functions
      */
-    generalControllerFunctions gtws = new generalControllerFunctions();
+    private generalControllerFunctions gtws = new generalControllerFunctions();
 
     /**
      * Decide type generated of  attribute compare string.
@@ -67,8 +67,8 @@ public class generateAttributeCompareRule {
         String basestring = "alter table ";
 
         basestring += compareRule.getMainTable() + "\n";
-        basestring += "add constraint " + compareRule.getName() + " check " + compareRule.getAffectedColumn() + " "
-                + compareRule.getOperator() + " " + compareRule.getValue();
+        basestring += "add constraint " + compareRule.getName() + " check (" + compareRule.getAffectedColumn() + " "
+                + compareRule.getOperator() + " " + compareRule.getValue()+ ");";
         return basestring;
 
 
