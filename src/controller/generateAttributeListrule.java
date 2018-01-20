@@ -24,7 +24,7 @@ public class generateAttributeListrule {
      * @param listRule the list rule
      * @return listRule
      */
-    public String decideTypeGeneratedAttrList(attributeListRule listRule) {
+    public attributeListRule decideTypeGeneratedAttrList(attributeListRule listRule) {
         String result = "";
         if (listRule.isConstraint()) {
             result = createAttributeListRuleConstraint(listRule);
@@ -33,7 +33,8 @@ public class generateAttributeListrule {
             result = createAttributeListRuleTrigger(listRule);
 
         }
-        return result;
+        listRule.setGeneratedCode(result);
+        return listRule;
     }
 
     /**

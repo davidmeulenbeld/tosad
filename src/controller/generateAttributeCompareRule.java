@@ -21,7 +21,7 @@ public class generateAttributeCompareRule {
      * @param compareRule the compare rule
      * @return compareRule
      */
-    public String decideTypeGeneratedAttrComp(attributeCompareRule compareRule) {
+    public attributeCompareRule decideTypeGeneratedAttrComp(attributeCompareRule compareRule) {
         String result = "";
         if (compareRule.isConstraint()) {
             result = createAttributeCompareRuleConstraint(compareRule);
@@ -30,7 +30,8 @@ public class generateAttributeCompareRule {
             result = createAttributeCompareRuleTrigger(compareRule);
 
         }
-        return result;
+        compareRule.setGeneratedCode(result);
+        return compareRule;
     }
 
     /**
