@@ -97,12 +97,7 @@ public class attributeRangeRule extends BusinessRule {
         private Builder() {
         }
 
-        /**
-         * Anattribute range rule builder.
-         *
-         * @return the builder of attributerangerule
-         */
-        public static Builder anattributeRangeRule() {
+        public static Builder buildattributeRangeRule() {
             return new Builder();
         }
 
