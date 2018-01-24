@@ -52,7 +52,7 @@ public class OtherRule extends BusinessRule{
         private Builder() {
         }
 
-        public static Builder anOtherRule() {
+        public static Builder buildOtherRule() {
             return new Builder();
         }
 

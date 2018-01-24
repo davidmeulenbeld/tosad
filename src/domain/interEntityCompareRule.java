@@ -72,7 +72,7 @@ public class interEntityCompareRule extends BusinessRule  {
         private Builder() {
         }
 
-        public static Builder aninterEntityCompareRule() {
+        public static Builder buildInterEntityCompareRule() {
             return new Builder();
         }
 

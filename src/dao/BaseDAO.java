@@ -22,7 +22,21 @@ public class BaseDAO {
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url, user, password);
-            System.out.println("CONNECTIE");
+            System.out.println("Connectie met Target DB");
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return conn;
+    }
+    public static Connection getToolConnection(){
+        final String url = "jdbc:oracle:thin:@//ondora02.hu.nl:8521/cursus02.hu.nl";
+        final String user = "tosad_2017_2c_team3";
+        final String password = "tosad_2017_2c_team3";
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(url, user, password);
+            System.out.println("Connectie met Tool DB");
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());

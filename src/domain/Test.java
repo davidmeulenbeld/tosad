@@ -8,6 +8,8 @@ import services.BusinessRuleService;
 import dao.getTableNamesDAO;
 import java.util.ArrayList;
 import java.util.List;
+import dao.implementBusinesRuleDAO;
+
 
 import static domain.attributeCompareRule.Builder.buildAttributeCompareRule;
 import static domain.attributeListRule.Builder.buildAttributeListRule;
@@ -18,7 +20,7 @@ public class Test {
         generateAttributeCompareRule gacr = new generateAttributeCompareRule();
         generateAttributeListrule gal = new generateAttributeListrule();
         getTableNamesDAO gtn = new getTableNamesDAO();
-
+        implementBusinesRuleDAO ibr = new implementBusinesRuleDAO();
 
 
 
@@ -64,7 +66,7 @@ public class Test {
         System.out.println(constraint);
         System.out.println("decided-------------------------------");
         // System.out.println(decidedtype);
-
+        ibr.updateActiveBusinessRule(45);
 
        // BusinessRuleService brs = new BusinessRuleService();
 

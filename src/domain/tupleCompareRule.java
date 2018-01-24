@@ -56,7 +56,7 @@ public class tupleCompareRule extends BusinessRule{
         private Builder() {
         }
 
-        public static Builder atupleCompareRule() {
+        public static Builder buildTupleCompareRule() {
             return new Builder();
         }
 

@@ -81,7 +81,7 @@ public class attributeCompareRule extends BusinessRule {
         private Builder() {
         }
 
-        public static Builder anattributeCompareRule() {
+        public static Builder buildAttributeCompareRule() {
             return new Builder();
         }
 

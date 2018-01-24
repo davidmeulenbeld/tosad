@@ -79,7 +79,7 @@ public class attributeListRule extends BusinessRule {
         private Builder() {
         }
 
-        public static Builder anattributeListRule() {
+        public static Builder buildAttributeListRule() {
             return new Builder();
         }
 
