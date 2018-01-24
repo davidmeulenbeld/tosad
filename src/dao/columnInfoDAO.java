@@ -10,7 +10,7 @@ import domain.column;
 
 
 
-public class getcolumninfo extends BaseDAO {
+public class columnInfoDAO extends BaseDAO {
 
      public List<column> describeTable(String table){
         List<column> columns = new ArrayList<column>();
