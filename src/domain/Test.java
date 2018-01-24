@@ -45,7 +45,7 @@ public class Test {
                 .setTrigger(true)
                 .setConstraint(false)
                 .build();
-        String trigger = gacr.decideTypeGeneratedAttrComp(ac);
+        String trigger = String.valueOf(gacr.decideTypeGeneratedAttrComp(ac));
         String constraint = gal.createAttributeListRuleTrigger(al);
 
         System.out.println("trigger------------------------------");
@@ -58,7 +58,7 @@ public class Test {
 
         BusinessRuleService brs = new BusinessRuleService();
 
-        brs.getTableNames();
+        brs.getBusinessRules();
 
     }
 }

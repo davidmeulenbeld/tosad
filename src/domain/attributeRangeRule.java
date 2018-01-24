@@ -102,7 +102,7 @@ public class attributeRangeRule extends BusinessRule {
          *
          * @return the builder of attributerangerule
          */
-        public static Builder anattributeRangeRule() {
+        public static Builder buildAttributeRangeRule() {
             return new Builder();
         }
 
