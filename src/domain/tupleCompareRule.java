@@ -1,6 +1,6 @@
 package domain;
 
-public class tupleCompareRule extends BusinessRule{
+public class tupleCompareRule extends BusinessRule {
 
     private String secondcolumn;
 
@@ -22,8 +22,6 @@ public class tupleCompareRule extends BusinessRule{
     public void setOperator(String operator) {
         this.operator = operator;
     }
-
-
 
 
     @Override
@@ -134,7 +132,6 @@ public class tupleCompareRule extends BusinessRule{
             this.example = example;
             return this;
         }
-
 
 
         public tupleCompareRule build() {

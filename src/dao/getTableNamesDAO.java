@@ -9,9 +9,9 @@ import java.util.List;
 public class getTableNamesDAO extends BaseDAO {
 
 
-    public List<String> getTableNames(){
+    public List<String> getTableNames() {
         List<String> tables = new ArrayList<String>();
-        try{
+        try {
             Connection conn = getTargetConnection();
 
             Statement stmt = conn.createStatement();
@@ -19,14 +19,13 @@ public class getTableNamesDAO extends BaseDAO {
             ResultSet RS = stmt.executeQuery(" SELECT table_name as tablename  from all_tables where owner = 'TOSAD_2017_2C_TEAM3_TARGET' " +
                     " and not table_name =  'HTMLDB_PLAN_TABLE'");
             String tablename;
-            while (RS.next()){
+            while (RS.next()) {
                 tablename = RS.getString("tablename");
                 tables.add(tablename);
             }
             conn.close();
 
-        }
-        catch(Exception exc){
+        } catch (Exception exc) {
 
         }
         return tables;

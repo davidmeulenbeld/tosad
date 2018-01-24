@@ -1,6 +1,6 @@
 package domain;
 
-public class interEntityCompareRule extends BusinessRule  {
+public class interEntityCompareRule extends BusinessRule {
 
     private String otherTable;
     private String otherColumn;

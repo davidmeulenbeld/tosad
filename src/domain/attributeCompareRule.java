@@ -17,7 +17,6 @@ public class attributeCompareRule extends BusinessRule {
     //get the corresponding variable
 
 
-
     public String getOperator() {
         return operator;
     }

@@ -6,8 +6,10 @@ import dao.BaseDAO;
 
 import services.BusinessRuleService;
 import dao.getTableNamesDAO;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import dao.implementBusinesRuleDAO;
 
 
@@ -21,10 +23,6 @@ public class Test {
         generateAttributeListrule gal = new generateAttributeListrule();
         getTableNamesDAO gtn = new getTableNamesDAO();
         implementBusinesRuleDAO ibr = new implementBusinesRuleDAO();
-
-
-
-
 
 
         ArrayList list = new ArrayList();
@@ -66,11 +64,11 @@ public class Test {
         System.out.println(constraint);
         System.out.println("decided-------------------------------");
         // System.out.println(decidedtype);
-       System.out.println( ibr.checkIsActive(51));
-ibr.implementBusinessRule(ac.getGeneratedCode(),ac.getBusinessRuleID());
-       // BusinessRuleService brs = new BusinessRuleService();
+        System.out.println(ibr.checkIsActive(51));
+        ibr.implementBusinessRule(ac.getGeneratedCode(), ac.getBusinessRuleID());
+        // BusinessRuleService brs = new BusinessRuleService();
 
-       // brs.getTableNames();
+        // brs.getTableNames();
 
     }
 }

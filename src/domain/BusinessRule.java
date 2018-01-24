@@ -138,7 +138,6 @@ public class BusinessRule {
     // set the corresponding variable to given value
 
 
-
     public void setCode(String code) {
         this.code = code;
     }

@@ -47,7 +47,7 @@ public class generateAttributeCompareRule {
 
 
         basestring += "begin" + "\n" +
-                "if " + compareRule.getAffectedColumn() + " " + compareRule.getOperator() +" "+ compareRule.getValue() +"  then" + " \n";
+                "if " + compareRule.getAffectedColumn() + " " + compareRule.getOperator() + " " + compareRule.getValue() +"  then" + " \n";
         basestring += "raise_application_error(-20010,'" + compareRule.getErrorCode() + "');" + "\n"
                 + "end if;" + "\n"
                 + "end;";

@@ -15,7 +15,8 @@ public class BaseDAO {
     public BaseDAO() {
 
     }
-    public static Connection getTargetConnection(){
+
+    public static Connection getTargetConnection() {
         final String url = "jdbc:oracle:thin:@//ondora02.hu.nl:8521/cursus02.hu.nl";
         final String user = "tosad_2017_2c_team3_target";
         final String password = "tosad_2017_2c_team3_target";
@@ -29,7 +30,8 @@ public class BaseDAO {
         }
         return conn;
     }
-    public static Connection getToolConnection(){
+
+    public static Connection getToolConnection() {
         final String url = "jdbc:oracle:thin:@//ondora02.hu.nl:8521/cursus02.hu.nl";
         final String user = "tosad_2017_2c_team3";
         final String password = "tosad_2017_2c_team3";

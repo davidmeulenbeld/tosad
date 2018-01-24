@@ -8,13 +8,11 @@ import domain.attributeRangeRule;
 import domain.column;
 
 
-
-
 public class columnInfoDAO extends BaseDAO {
 
-     public List<column> describeTable(String table){
+    public List<column> describeTable(String table) {
         List<column> columns = new ArrayList<column>();
-        try{
+        try {
             Connection conn = getTargetConnection();
 
             Statement stmt = conn.createStatement();
@@ -24,18 +22,17 @@ public class columnInfoDAO extends BaseDAO {
 
 
             DatabaseMetaData dbm = conn.getMetaData();
-            ResultSet rs = dbm.getColumns(null,"%",table,"%");
-            while (rs.next()){
-               columnname = rs.getString("COLUMN_NAME");
-               columntype = rs.getString("TYPE_NAME");
-                column column = new column(columnname,columntype);
+            ResultSet rs = dbm.getColumns(null, "%", table, "%");
+            while (rs.next()) {
+                columnname = rs.getString("COLUMN_NAME");
+                columntype = rs.getString("TYPE_NAME");
+                column column = new column(columnname, columntype);
                 columns.add(column);
             }
 
             conn.close();
 
-        }
-        catch(Exception exc){
+        } catch (Exception exc) {
             System.out.println(exc);
         }
         return columns;

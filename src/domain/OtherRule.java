@@ -1,8 +1,8 @@
 package domain;
 
-public class OtherRule extends BusinessRule{
+public class OtherRule extends BusinessRule {
 
-    private String sql ;
+    private String sql;
     private int otherRuleID;
 
 
@@ -46,7 +46,7 @@ public class OtherRule extends BusinessRule{
         protected String affectedColumn;
         protected String example;
         protected int BusinessRuleID;
-        private String sql ;
+        private String sql;
         private int otherRuleID;
 
         private Builder() {
