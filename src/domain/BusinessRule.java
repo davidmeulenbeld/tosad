@@ -59,6 +59,8 @@ public class BusinessRule {
      */
     protected String example;
 
+    protected int BusinessRuleID;
+
 
     // GETTERS
     // returns corresponding variable
@@ -128,11 +130,12 @@ public class BusinessRule {
         return example;
     }
 
+    public int getBusinessRuleID() {
+        return BusinessRuleID;
+    }
 
-
-    //setters
+//setters
     // set the corresponding variable to given value
-
 
 
     public void setCode(String code) {
@@ -199,27 +202,30 @@ public class BusinessRule {
         this.example = example;
     }
 
+    public void setBusinessRuleID(int businessRuleID) {
+        BusinessRuleID = businessRuleID;
+    }
 
-    // generates overview of instance
+// generates overview of instance
+
 
     @Override
     public String toString() {
-        return
-                ", code='" + code + '\'' + "\n" +
-                        ", name='" + name + '\'' + "\n" +
-                        ", explanation='" + explanation + '\'' + "\n" +
-                        ", mainTable='" + mainTable + '\'' + "\n" +
-                        ", insert=" + insert + "\n" +
-                        ", update=" + update + "\n" +
-                        ", delete=" + delete + "\n" +
-                        ", trigger=" + trigger + "\n" +
-                        ", constraint=" + constraint + "\n" +
-                        ", generatedCode='" + generatedCode + '\'' + "\n" +
-                        ", errorCode='" + errorCode + '\'' + "\n" +
-                        ", affectedColumn='" + affectedColumn + '\'' + "\n" +
-                        ", example='" + example + '\'' + "\n" +
-                        '}';
+        return "BusinessRule{" +
+                "code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                ", explanation='" + explanation + '\'' +
+                ", mainTable='" + mainTable + '\'' +
+                ", insert=" + insert +
+                ", update=" + update +
+                ", delete=" + delete +
+                ", trigger=" + trigger +
+                ", constraint=" + constraint +
+                ", generatedCode='" + generatedCode + '\'' +
+                ", errorCode='" + errorCode + '\'' +
+                ", affectedColumn='" + affectedColumn + '\'' +
+                ", example='" + example + '\'' +
+                ", BusinessRuleID='" + BusinessRuleID + '\'' +
+                '}';
     }
-
-
 }

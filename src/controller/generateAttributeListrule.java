@@ -13,11 +13,11 @@ public class generateAttributeListrule {
     /**
      * declaration of general control functions
      */
-   private  generalControllerFunctions gtws = new generalControllerFunctions();
+    private generalControllerFunctions gtws = new generalControllerFunctions();
 
     /**
      * Decide type generated of attribute list rule.
-     *
+     * <p>
      * returns object
      * for now returns a string
      *

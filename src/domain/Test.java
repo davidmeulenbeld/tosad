@@ -2,10 +2,16 @@ package domain;
 
 import controller.generateAttributeCompareRule;
 import controller.generateAttributeListrule;
+import dao.BaseDAO;
+
 import services.BusinessRuleService;
+import dao.getTableNamesDAO;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import dao.implementBusinesRuleDAO;
+
 
 import static domain.attributeCompareRule.Builder.buildAttributeCompareRule;
 import static domain.attributeListRule.Builder.buildAttributeListRule;
@@ -15,18 +21,22 @@ public class Test {
     public static void main(String args[]) {
         generateAttributeCompareRule gacr = new generateAttributeCompareRule();
         generateAttributeListrule gal = new generateAttributeListrule();
+        getTableNamesDAO gtn = new getTableNamesDAO();
+        implementBusinesRuleDAO ibr = new implementBusinesRuleDAO();
+
+
         ArrayList list = new ArrayList();
         list.add("a");
         list.add("b");
         list.add("c");
         list.add("d");
         attributeCompareRule ac = buildAttributeCompareRule()
-                .setName("geery")
-                .setInsert(false)
+                .setName("testtrigger")
+                .setInsert(true)
                 .setDelete(true)
                 .setUpdate(true)
-                .setMainTable("testt")
-                .setAffectedColumn("test")
+                .setMainTable("MOVIE")
+                .setAffectedColumn("PRICE")
                 .setValue(20)
                 .setOperator(">")
                 .setConstraint(false)
@@ -45,7 +55,7 @@ public class Test {
                 .setTrigger(true)
                 .setConstraint(false)
                 .build();
-        String trigger = String.valueOf(gacr.decideTypeGeneratedAttrComp(ac));
+        attributeCompareRule trigger = gacr.decideTypeGeneratedAttrComp(ac);
         String constraint = gal.createAttributeListRuleTrigger(al);
 
         System.out.println("trigger------------------------------");
@@ -54,6 +64,9 @@ public class Test {
         System.out.println(constraint);
         System.out.println("decided-------------------------------");
         // System.out.println(decidedtype);
+        System.out.println(ibr.checkIsActive(51));
+        ibr.implementBusinessRule(ac.getGeneratedCode(), ac.getBusinessRuleID());
+        // BusinessRuleService brs = new BusinessRuleService();
 
 
         BusinessRuleService brs = new BusinessRuleService();

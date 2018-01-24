@@ -1,8 +1,9 @@
 package domain;
 
-public class OtherRule extends BusinessRule{
+public class OtherRule extends BusinessRule {
 
-    private String sql ;
+    private String sql;
+    private int otherRuleID;
 
 
     public String getSql() {
@@ -13,10 +14,19 @@ public class OtherRule extends BusinessRule{
         this.sql = sql;
     }
 
+    public int getOtherRuleID() {
+        return otherRuleID;
+    }
+
+    public void setOtherRuleID(int otherRuleID) {
+        this.otherRuleID = otherRuleID;
+    }
+
     @Override
     public String toString() {
-        return "attributeOtherRule{" +
+        return "OtherRule{" +
                 "sql='" + sql + '\'' +
+                ", otherRuleID=" + otherRuleID +
                 "} " + super.toString();
     }
 
@@ -35,17 +45,24 @@ public class OtherRule extends BusinessRule{
         protected String errorCode;
         protected String affectedColumn;
         protected String example;
-        private String sql ;
+        protected int BusinessRuleID;
+        private String sql;
+        private int otherRuleID;
 
         private Builder() {
         }
 
-        public static Builder buildattributeOtherRule() {
+        public static Builder buildOtherRule() {
             return new Builder();
         }
 
         public Builder setSql(String sql) {
             this.sql = sql;
+            return this;
+        }
+
+        public Builder setOtherRuleID(int otherRuleID) {
+            this.otherRuleID = otherRuleID;
             return this;
         }
 
@@ -114,23 +131,30 @@ public class OtherRule extends BusinessRule{
             return this;
         }
 
+        public Builder setBusinessRuleID(int BusinessRuleID) {
+            this.BusinessRuleID = BusinessRuleID;
+            return this;
+        }
+
         public OtherRule build() {
-            OtherRule OtherRule = new OtherRule();
-            OtherRule.setSql(sql);
-            OtherRule.setCode(code);
-            OtherRule.setName(name);
-            OtherRule.setExplanation(explanation);
-            OtherRule.setMainTable(mainTable);
-            OtherRule.setInsert(insert);
-            OtherRule.setUpdate(update);
-            OtherRule.setDelete(delete);
-            OtherRule.setTrigger(trigger);
-            OtherRule.setConstraint(constraint);
-            OtherRule.setGeneratedCode(generatedCode);
-            OtherRule.setErrorCode(errorCode);
-            OtherRule.setAffectedColumn(affectedColumn);
-            OtherRule.setExample(example);
-            return OtherRule;
+            OtherRule otherRule = new OtherRule();
+            otherRule.setSql(sql);
+            otherRule.setOtherRuleID(otherRuleID);
+            otherRule.setCode(code);
+            otherRule.setName(name);
+            otherRule.setExplanation(explanation);
+            otherRule.setMainTable(mainTable);
+            otherRule.setInsert(insert);
+            otherRule.setUpdate(update);
+            otherRule.setDelete(delete);
+            otherRule.setTrigger(trigger);
+            otherRule.setConstraint(constraint);
+            otherRule.setGeneratedCode(generatedCode);
+            otherRule.setErrorCode(errorCode);
+            otherRule.setAffectedColumn(affectedColumn);
+            otherRule.setExample(example);
+            otherRule.setBusinessRuleID(BusinessRuleID);
+            return otherRule;
         }
     }
 }

@@ -24,10 +24,10 @@ public class generateAttributeRangeRule {
     public String createAttributeRangeRuleTrigger(attributeRangeRule rangeRule) {
         String baseString = "create trigger ";
         baseString += rangeRule.getName() + " \n";
-        baseString += gtws.generateTriggerWhenString(rangeRule.isInsert(),rangeRule.isDelete(),rangeRule.isUpdate(),rangeRule.getMainTable(),rangeRule.getAffectedColumn())+ "\n";
+        baseString += gtws.generateTriggerWhenString(rangeRule.isInsert(), rangeRule.isDelete(), rangeRule.isUpdate(), rangeRule.getMainTable(), rangeRule.getAffectedColumn()) + "\n";
         baseString += "begin \n";
-        baseString += "if "+ rangeRule.getAffectedColumn() + "between "+ rangeRule.getRangeStart()+ " and "+ rangeRule.getRangeEnd() + " then \n";
-        baseString += "raise_application_error(-20030,'"+rangeRule.getErrorCode()+"');";
+        baseString += "if " + rangeRule.getAffectedColumn() + "between " + rangeRule.getRangeStart() + " and " + rangeRule.getRangeEnd() + " then \n";
+        baseString += "raise_application_error(-20030,'" + rangeRule.getErrorCode() + "');";
         return baseString;
     }
 
