@@ -2,8 +2,9 @@ package domain;
 
 import controller.generateAttributeCompareRule;
 import controller.generateAttributeListrule;
+import dao.BaseDAO;
 import services.BusinessRuleService;
-
+import dao.getTableNamesDAO;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,14 @@ public class Test {
     public static void main(String args[]) {
         generateAttributeCompareRule gacr = new generateAttributeCompareRule();
         generateAttributeListrule gal = new generateAttributeListrule();
+        getTableNamesDAO gtn = new getTableNamesDAO();
+
+
+
+
+
+
+
         ArrayList list = new ArrayList();
         list.add("a");
         list.add("b");
@@ -45,7 +54,7 @@ public class Test {
                 .setTrigger(true)
                 .setConstraint(false)
                 .build();
-        String trigger = gacr.decideTypeGeneratedAttrComp(ac);
+        attributeCompareRule trigger = gacr.decideTypeGeneratedAttrComp(ac);
         String constraint = gal.createAttributeListRuleTrigger(al);
 
         System.out.println("trigger------------------------------");
@@ -54,11 +63,11 @@ public class Test {
         System.out.println(constraint);
         System.out.println("decided-------------------------------");
         // System.out.println(decidedtype);
+        System.out.println(gtn.getTableNames());
 
+       // BusinessRuleService brs = new BusinessRuleService();
 
-        BusinessRuleService brs = new BusinessRuleService();
-
-        brs.getTableNames();
+       // brs.getTableNames();
 
     }
 }
