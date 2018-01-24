@@ -3,7 +3,7 @@ package domain;
 import controller.generateAttributeCompareRule;
 import controller.generateAttributeListrule;
 import dao.BaseDAO;
-import dao.getcolumninfo;
+
 import services.BusinessRuleService;
 import dao.getTableNamesDAO;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class Test {
         generateAttributeCompareRule gacr = new generateAttributeCompareRule();
         generateAttributeListrule gal = new generateAttributeListrule();
         getTableNamesDAO gtn = new getTableNamesDAO();
-        getcolumninfo gci = new getcolumninfo();
+
 
 
 
@@ -65,7 +65,7 @@ public class Test {
         System.out.println("decided-------------------------------");
         // System.out.println(decidedtype);
 
-        System.out.println(gci.describeTable("MOVIE"));
+
        // BusinessRuleService brs = new BusinessRuleService();
 
        // brs.getTableNames();

@@ -10,6 +10,7 @@ public class attributeCompareRule extends BusinessRule {
 
     private String operator;
     private int value;
+    private int attributeCompareRuleID;
 
 
     //getters
@@ -26,6 +27,10 @@ public class attributeCompareRule extends BusinessRule {
         return value;
     }
 
+    public int getAttributeCompareRuleID() {
+        return attributeCompareRuleID;
+    }
+
     //setters
     //set the corresponding variable
 
@@ -39,114 +44,101 @@ public class attributeCompareRule extends BusinessRule {
         this.value = value;
     }
 
-
-
-    //extends businessrule.toString()
-    @Override
-    public String toString() {
-        return "attributeCompareRule{" + "\n" +
-                "operator='" + operator + '\'' + "\n" +
-                ", value=" + value + "\n" +
-                super.toString();
+    public void setAttributeCompareRuleID(int attributeCompareRuleID) {
+        this.attributeCompareRuleID = attributeCompareRuleID;
     }
 
-    /**
-     * inner builder for type attributecomparerule
-     *
-     */
+    //extends businessrule.toString()
+
+    @Override
+    public String toString() {
+        return "attributeCompareRule{" +
+                "operator='" + operator + '\'' +
+                ", value=" + value +
+                ", attributeCompareRuleID=" + attributeCompareRuleID +
+                "} " + super.toString();
+    }
+
     public static final class Builder {
-        //for variable information see corresponding class and businessrule
-
-
-        private String name;
-
-        private String mainTable;
-
-        private boolean insert;
-
-        private boolean update;
-
-        private boolean delete;
-
-        private boolean trigger;
-
-        private boolean constraint;
-
-        private String generatedCode;
-
-        private String errorCode;
-
-        private String affectedColumn;
-
+        protected String code;
+        protected String name;
+        protected String explanation;
+        protected String mainTable;
+        protected boolean insert;
+        protected boolean update;
+        protected boolean delete;
+        protected boolean trigger;
+        protected boolean constraint;
+        protected String generatedCode;
+        protected String errorCode;
+        protected String affectedColumn;
+        protected String example;
+        protected String BusinessRuleID;
         private String operator;
         private int value;
+        private int attributeCompareRuleID;
 
         private Builder() {
         }
 
-        /**
-         * Build attribute compare rule builder.
-         *
-         * @return the builder
-         */
-        public static Builder buildAttributeCompareRule() {
+        public static Builder anattributeCompareRule() {
             return new Builder();
         }
 
-        //builder setters
-        // sets a piece of the complicated instance
-
-
-
+        public Builder setCode(String code) {
+            this.code = code;
+            return this;
+        }
 
         public Builder setOperator(String operator) {
             this.operator = operator;
             return this;
         }
 
+        public Builder setValue(int value) {
+            this.value = value;
+            return this;
+        }
+
+        public Builder setAttributeCompareRuleID(int attributeCompareRuleID) {
+            this.attributeCompareRuleID = attributeCompareRuleID;
+            return this;
+        }
 
         public Builder setName(String name) {
             this.name = name;
             return this;
         }
 
-
-        public Builder setValue(int value) {
-            this.value = value;
+        public Builder setExplanation(String explanation) {
+            this.explanation = explanation;
             return this;
         }
-
-
 
         public Builder setMainTable(String mainTable) {
             this.mainTable = mainTable;
             return this;
         }
 
-
         public Builder setInsert(boolean insert) {
             this.insert = insert;
             return this;
         }
-
 
         public Builder setUpdate(boolean update) {
             this.update = update;
             return this;
         }
 
-
         public Builder setDelete(boolean delete) {
             this.delete = delete;
             return this;
         }
 
-
         public Builder setTrigger(boolean trigger) {
             this.trigger = trigger;
             return this;
         }
-
 
         public Builder setConstraint(boolean constraint) {
             this.constraint = constraint;
@@ -163,38 +155,40 @@ public class attributeCompareRule extends BusinessRule {
             return this;
         }
 
-
         public Builder setAffectedColumn(String affectedColumn) {
             this.affectedColumn = affectedColumn;
             return this;
         }
 
+        public Builder setExample(String example) {
+            this.example = example;
+            return this;
+        }
 
-        /**
-         * Build attribute compare rule.
-         *
-         * @return an instance of attribute compare rule
-         */
+        public Builder setBusinessRuleID(String BusinessRuleID) {
+            this.BusinessRuleID = BusinessRuleID;
+            return this;
+        }
+
         public attributeCompareRule build() {
             attributeCompareRule attributeCompareRule = new attributeCompareRule();
-            attributeCompareRule.insert = this.insert;
-            attributeCompareRule.operator = this.operator;
-            attributeCompareRule.errorCode = this.errorCode;
-            attributeCompareRule.example = "Delivery.amount must be bigger than 1.";
-
-            attributeCompareRule.code = "ACMP";
-            attributeCompareRule.generatedCode = this.generatedCode;
-            attributeCompareRule.value = this.value;
-            attributeCompareRule.explanation = "The attribute value must be equal to," +
-                    " bigger than, smaller than," +
-                    " equal to or bigger, equal to or smaller than given value.";
-            attributeCompareRule.name = this.name;
-            attributeCompareRule.constraint = this.constraint;
-            attributeCompareRule.affectedColumn = this.affectedColumn;
-            attributeCompareRule.delete = this.delete;
-            attributeCompareRule.update = this.update;
-            attributeCompareRule.trigger = this.trigger;
-            attributeCompareRule.mainTable = this.mainTable;
+            attributeCompareRule.setCode(code);
+            attributeCompareRule.setOperator(operator);
+            attributeCompareRule.setValue(value);
+            attributeCompareRule.setAttributeCompareRuleID(attributeCompareRuleID);
+            attributeCompareRule.setName(name);
+            attributeCompareRule.setExplanation(explanation);
+            attributeCompareRule.setMainTable(mainTable);
+            attributeCompareRule.setInsert(insert);
+            attributeCompareRule.setUpdate(update);
+            attributeCompareRule.setDelete(delete);
+            attributeCompareRule.setTrigger(trigger);
+            attributeCompareRule.setConstraint(constraint);
+            attributeCompareRule.setGeneratedCode(generatedCode);
+            attributeCompareRule.setErrorCode(errorCode);
+            attributeCompareRule.setAffectedColumn(affectedColumn);
+            attributeCompareRule.setExample(example);
+            attributeCompareRule.setBusinessRuleID(BusinessRuleID);
             return attributeCompareRule;
         }
     }
