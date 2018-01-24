@@ -59,7 +59,7 @@ public class BusinessRule {
      */
     protected String example;
 
-    protected String BusinessRuleID;
+    protected int BusinessRuleID;
 
 
     // GETTERS
@@ -130,7 +130,7 @@ public class BusinessRule {
         return example;
     }
 
-    public String getBusinessRuleID() {
+    public int getBusinessRuleID() {
         return BusinessRuleID;
     }
 
@@ -203,7 +203,7 @@ public class BusinessRule {
         this.example = example;
     }
 
-    public void setBusinessRuleID(String businessRuleID) {
+    public void setBusinessRuleID(int businessRuleID) {
         BusinessRuleID = businessRuleID;
     }
 

@@ -33,12 +33,12 @@ public class Test {
         list.add("c");
         list.add("d");
         attributeCompareRule ac = buildAttributeCompareRule()
-                .setName("geery")
-                .setInsert(false)
+                .setName("testtrigger")
+                .setInsert(true)
                 .setDelete(true)
                 .setUpdate(true)
-                .setMainTable("testt")
-                .setAffectedColumn("test")
+                .setMainTable("MOVIE")
+                .setAffectedColumn("PRICE")
                 .setValue(20)
                 .setOperator(">")
                 .setConstraint(false)
@@ -66,8 +66,8 @@ public class Test {
         System.out.println(constraint);
         System.out.println("decided-------------------------------");
         // System.out.println(decidedtype);
-        ibr.updateActiveBusinessRule(45);
-
+       System.out.println( ibr.checkIsActive(51));
+ibr.implementBusinessRule(ac.getGeneratedCode(),ac.getBusinessRuleID());
        // BusinessRuleService brs = new BusinessRuleService();
 
        // brs.getTableNames();

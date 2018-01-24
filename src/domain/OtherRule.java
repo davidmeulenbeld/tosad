@@ -45,7 +45,7 @@ public class OtherRule extends BusinessRule{
         protected String errorCode;
         protected String affectedColumn;
         protected String example;
-        protected String BusinessRuleID;
+        protected int BusinessRuleID;
         private String sql ;
         private int otherRuleID;
 
@@ -131,7 +131,7 @@ public class OtherRule extends BusinessRule{
             return this;
         }
 
-        public Builder setBusinessRuleID(String BusinessRuleID) {
+        public Builder setBusinessRuleID(int BusinessRuleID) {
             this.BusinessRuleID = BusinessRuleID;
             return this;
         }

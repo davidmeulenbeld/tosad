@@ -81,7 +81,7 @@ public class attributeRangeRule extends BusinessRule {
         protected String errorCode;
         protected String affectedColumn;
         protected String example;
-        protected String BusinessRuleID;
+        protected int BusinessRuleID;
         private int rangeStart;
         private int rangeEnd;
         private boolean insideRange;
@@ -179,7 +179,7 @@ public class attributeRangeRule extends BusinessRule {
             return this;
         }
 
-        public Builder setBusinessRuleID(String BusinessRuleID) {
+        public Builder setBusinessRuleID(int BusinessRuleID) {
             this.BusinessRuleID = BusinessRuleID;
             return this;
         }

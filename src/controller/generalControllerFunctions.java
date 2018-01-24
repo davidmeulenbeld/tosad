@@ -39,7 +39,7 @@ public class generalControllerFunctions {
             }
             result += "update of " + affectedColumn;
         }
-        result += " on " + tablename;
+        result += " on " + tablename+ " \n";
 
         return result;
     }

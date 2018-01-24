@@ -63,7 +63,7 @@ public class interEntityCompareRule extends BusinessRule  {
         protected String errorCode;
         protected String affectedColumn;
         protected String example;
-        protected String BusinessRuleID;
+        protected int BusinessRuleID;
         private String otherTable;
         private String otherColumn;
         private String operator;
@@ -161,7 +161,7 @@ public class interEntityCompareRule extends BusinessRule  {
             return this;
         }
 
-        public Builder setBusinessRuleID(String BusinessRuleID) {
+        public Builder setBusinessRuleID(int BusinessRuleID) {
             this.BusinessRuleID = BusinessRuleID;
             return this;
         }
