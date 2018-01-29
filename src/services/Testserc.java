@@ -18,9 +18,9 @@ public class Testserc {
         int port = 9000;
         HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
         System.out.println("server started at " + port);
-        Roothandler rh = new Roothandler();
-        server.createContext("/", rh);
 
+        server.createContext("/", new Roothandler());
+        server.createContext("/tablenames",new Tablehandler());
         server.setExecutor(null);
         server.start();
     }
