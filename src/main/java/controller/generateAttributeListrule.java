@@ -1,6 +1,6 @@
-package controller;
+package main.java.controller;
 
-import domain.attributeListRule;
+import main.java.domain.attributeListRule;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,11 +1,11 @@
-package dao;
+package main.java.dao;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import domain.attributeRangeRule;
-import domain.column;
+import main.java.domain.attributeRangeRule;
+import main.java.domain.column;
 
 
 public class columnInfoDAO extends BaseDAO {

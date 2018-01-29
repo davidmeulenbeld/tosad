@@ -1,4 +1,4 @@
-package domain;
+package main.java.domain;
 
 /**
  * The type Attribute compare rule.

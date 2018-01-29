@@ -1,6 +1,6 @@
-package controller;
+package main.java.controller;
 
-import domain.tupleCompareRule;
+import main.java.domain.tupleCompareRule;
 
 public class generateTupleCompareRule {
 

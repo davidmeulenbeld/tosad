@@ -1,6 +1,6 @@
-package controller;
+package main.java.controller;
 
-import domain.interEntityCompareRule;
+import main.java.domain.interEntityCompareRule;
 
 public class generateinterentityrule {
 

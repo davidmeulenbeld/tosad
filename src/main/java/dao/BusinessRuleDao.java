@@ -1,6 +1,6 @@
 package main.java.dao;
 
-import domain.BusinessRule;
+import main.java.domain.BusinessRule;
 import java.util.List;
 
 public class BusinessRuleDao {

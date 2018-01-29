@@ -1,7 +1,7 @@
-package controller;
+package main.java.controller;
 
 
-import domain.attributeCompareRule;
+import main.java.domain.attributeCompareRule;
 
 
 /**
