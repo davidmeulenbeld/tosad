@@ -9,8 +9,9 @@ import java.util.List;
 public class getTableNamesDAO extends BaseDAO {
 
 
-    public List<String> getTableNames() {
-        List<String> tables = new ArrayList<String>();
+
+    public ArrayList<String> getTableNames() {
+        ArrayList<String> tables = new ArrayList<String>();
         try {
             Connection conn = getTargetConnection();
 

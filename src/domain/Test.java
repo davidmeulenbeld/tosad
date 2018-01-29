@@ -65,13 +65,13 @@ public class Test {
         System.out.println("decided-------------------------------");
         // System.out.println(decidedtype);
         System.out.println(ibr.checkIsActive(51));
-        ibr.implementBusinessRule(ac.getGeneratedCode(), ac.getBusinessRuleID());
+
         // BusinessRuleService brs = new BusinessRuleService();
 
 
-        BusinessRuleService brs = new BusinessRuleService();
-
-        brs.getBusinessRules();
+       // BusinessRuleService brs = new BusinessRuleService();
+        System.out.println(gtn.getTableNames());
+        //brs.getBusinessRules();
 
     }
 }
