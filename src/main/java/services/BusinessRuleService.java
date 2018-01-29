@@ -1,11 +1,9 @@
-package services;
+package main.java.services;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import controller.generateAttributeRangeRule;
-import dao.BusinessRuleDao;
-import dao.BusinessRuleDaoImpl;
 import domain.attributeRangeRule;
 import org.apache.http.*;
 import org.json.JSONArray;
@@ -14,7 +12,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
@@ -28,7 +25,6 @@ import java.util.Map;
 import static domain.attributeRangeRule.Builder.buildAttributeRangeRule;
 
 public class BusinessRuleService {
-    BusinessRuleDao brDao = new BusinessRuleDaoImpl();
 
     private final String USER_AGENT = "Mozilla/5.0";
 
