@@ -2,13 +2,11 @@ package domain;
 
 import controller.generateAttributeCompareRule;
 import controller.generateAttributeListrule;
-import dao.BaseDAO;
 
-import services.BusinessRuleService;
 import dao.getTableNamesDAO;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 import dao.implementBusinesRuleDAO;
 

@@ -1,11 +1,10 @@
 package services;
 
-import com.google.gson.JsonObject;
-import com.sun.net.httpserver.Headers;
+
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import controller.TableJsonCreator;
-import org.json.JSONArray;
+
 
 import java.io.IOException;
 import java.io.OutputStream;
