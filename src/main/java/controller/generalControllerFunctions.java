@@ -1,4 +1,4 @@
-package main.java.controller;
+package controller;
 
 /**
  * The type General controller functions.

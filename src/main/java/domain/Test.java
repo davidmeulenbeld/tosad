@@ -1,20 +1,20 @@
-package main.java.domain;
+package domain;
 
-import main.java.controller.generateAttributeCompareRule;
-import main.java.controller.generateAttributeListrule;
-import main.java.dao.BaseDAO;
+import controller.generateAttributeCompareRule;
+import controller.generateAttributeListrule;
+import dao.BaseDAO;
 
-import main.java.services.BusinessRuleService;
-import main.java.dao.getTableNamesDAO;
+import services.BusinessRuleService;
+import dao.getTableNamesDAO;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.dao.implementBusinesRuleDAO;
+import dao.implementBusinesRuleDAO;
 
 
-import static main.java.domain.attributeCompareRule.Builder.buildAttributeCompareRule;
-import static main.java.domain.attributeListRule.Builder.buildAttributeListRule;
+import static domain.attributeCompareRule.Builder.buildAttributeCompareRule;
+import static domain.attributeListRule.Builder.buildAttributeListRule;
 
 public class Test {
 

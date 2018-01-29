@@ -1,10 +1,10 @@
-package main.java.services;
+package services;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import main.java.controller.generateAttributeRangeRule;
-import main.java.domain.attributeRangeRule;
+import controller.generateAttributeRangeRule;
+import domain.attributeRangeRule;
 import org.apache.http.*;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 
-import static main.java.domain.attributeRangeRule.Builder.buildAttributeRangeRule;
+import static domain.attributeRangeRule.Builder.buildAttributeRangeRule;
 
 public class BusinessRuleService {
 

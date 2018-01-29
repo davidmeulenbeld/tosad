@@ -1,6 +1,6 @@
-package main.java.controller;
+package controller;
 
-import main.java.domain.attributeRangeRule;
+import domain.attributeRangeRule;
 
 
 public class generateAttributeRangeRule {
