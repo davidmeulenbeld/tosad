@@ -6,7 +6,7 @@ import java.sql.Statement;
 
 public class implementBusinesRuleDAO extends BaseDAO {
 
-    public void implementBusinessRule(String generatedCode, int businessRuleID) {
+    public implementBusinesRuleDAO(String generatedCode, int businessRuleID) {
         if (!checkIsActive(businessRuleID)) {
             try {
                 Connection con = BaseDAO.getTargetConnection();
@@ -15,6 +15,8 @@ public class implementBusinesRuleDAO extends BaseDAO {
 
                 stmt.executeUpdate(generatedCode);
 
+                this.updateActiveBusinessRule(businessRuleID);
+                this.updateGeneratedCode(generatedCode, businessRuleID);
                 System.out.println("BusinessRule Implemented");
                 con.close();
             } catch (Exception exc) {
@@ -52,6 +54,22 @@ public class implementBusinesRuleDAO extends BaseDAO {
         try {
             String baseStatement = "update TOSAD_2017_2C_TEAM3.businessrule set actief = 1" +
                     " where id_businessrule = " + businessRuleID;
+            Connection con = BaseDAO.getToolConnection();
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate(baseStatement);
+
+            con.close();
+        } catch (Exception exc) {
+            System.out.println(exc);
+        }
+    }
+
+    public void updateGeneratedCode(String generatedCode, int businessRuleID) {
+        try {
+            generatedCode = generatedCode.replaceAll("'", "\'");
+            String baseStatement = "update TOSAD_2017_2C_TEAM3.businessrule set generatedcode = '" + generatedCode +
+                    "' where id_businessrule = " + businessRuleID + ";";
+            System.out.println(baseStatement);
             Connection con = BaseDAO.getToolConnection();
             Statement stmt = con.createStatement();
             stmt.executeUpdate(baseStatement);

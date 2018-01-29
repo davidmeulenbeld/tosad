@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 
+import dao.implementBusinesRuleDAO;
+
 import static domain.attributeRangeRule.Builder.buildAttributeRangeRule;
 
 public class BusinessRuleService {
@@ -105,24 +107,93 @@ public class BusinessRuleService {
                 String type = String.valueOf(jso.get("type"));
                 System.out.println("type" + type);
 
-                if(type == "AttributeRangeRule") {
+                //Kijken welk type het is
+                if(type.equals("AttributeRangeRule")) {
+                    System.out.println("Inside attribute range rule");
+                    //First we're casting the values to a double and then to an int.
+                    //If we do this right away we get the error code: java.base/java.lang.Double cannot be cast to java.base/java.lang.Integer
+                    double rangeStart = (double) jso.get("rangestart");
+                    int rangeStartInt = (int) rangeStart;
+
+                    double rangeEnd = (double) jso.get("rangeend");
+                    int rangeEndInt = (int) rangeEnd;
+
+                    double insideRange = (double) jso.get("insiderange");
+                    boolean insideRangeBoolean = false;
+                    if(insideRange == 1) {
+                        insideRangeBoolean = true;
+                    } else if (insideRange == 0) {
+                        insideRangeBoolean = false;
+                    }
+
+                    String name = String.valueOf(jso.get("name"));
+                    String mainTable = String.valueOf(jso.get("maintable"));
+                    String affectedColumn = String.valueOf(jso.get("affectedcolumn"));
+
+                    double triggerBr = (double) jso.get("triggerbr");
+                    int triggerBrInt = (int) triggerBr;
+
+
+                    double constraintBr = (double) jso.get("constraintbr");
+                    int constraintBrInt = (int) constraintBr;
+
+                    double businessRuleID = (double) jso.get("id_businessrule");
+                    int businessRuleIDInt = (int) businessRuleID;
+
+                    double insert = (double) jso.get("insertbr");
+                    boolean insertBoolean = false;
+                    if(insert >= 1){
+                        insertBoolean = true;
+                    } else {
+                        insertBoolean = false;
+                    }
+
+                    double update = (double) jso.get("updatebr");
+                    boolean updateBoolean = false;
+                    if(insert >= 1){
+                        updateBoolean = true;
+                    } else {
+                        updateBoolean = false;
+                    }
+
+                    double delete = (double) jso.get("deletebr");
+                    boolean deleteBoolean = false;
+                    if(insert >= 1){
+                        deleteBoolean = true;
+                    } else {
+                        deleteBoolean = false;
+                    }
+                    System.out.println("still inside");
 
                     generateAttributeRangeRule gatrr = new generateAttributeRangeRule();
 
                     attributeRangeRule atrr = buildAttributeRangeRule()
-                            .setName("")
-                            .setRangeStart(0)
-                            .setRangeEnd(2)
+                            .setName(name)
+                            .setRangeStart(rangeStartInt)
+                            .setRangeEnd(rangeEndInt)
+                            .setMainTable(mainTable)
+                            .setInsideRange(insideRangeBoolean)
+                            .setAffectedColumn(affectedColumn)
+                            .setInsert(insertBoolean)
+                            .setDelete(deleteBoolean)
+                            .setUpdate(updateBoolean)
                             .build();
-                    if("constraint" == "constraint") {
-                        gatrr.createAttributeRangeRuleConstraint(atrr);
-                    }
 
-                    if("trigger" == "trigger") {
-                        gatrr.createAttributeRangeRuleTrigger(atrr);
+                    System.out.println(constraintBr);
+                    if(constraintBrInt == 1) {
+                        String constraintAttributeRangeRule = gatrr.createAttributeRangeRuleConstraint(atrr);
+                        implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(constraintAttributeRangeRule, businessRuleIDInt);
+                        implbrdao.updateActiveBusinessRule(businessRuleIDInt);
+                    }
+                    System.out.println(triggerBr);
+                    if(triggerBrInt == 1) {
+                        String triggerAttributeRangeRUle = gatrr.createAttributeRangeRuleTrigger(atrr);
+                        implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(triggerAttributeRangeRUle, businessRuleIDInt);
                     }
 
                 }
+
+                System.out.println("outside");
 
 
                 System.out.println(n);
@@ -130,7 +201,7 @@ public class BusinessRuleService {
 
 
 
-            //TODO: Kijken welk type het is
+
             //TODO: Adhv type een controller aanroepen
             //TODO: Rest service POST Gegenereerde businessrule
 
