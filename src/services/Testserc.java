@@ -21,6 +21,7 @@ public class Testserc {
 
         server.createContext("/", new Roothandler());
         server.createContext("/tablenames",new Tablehandler());
+        server.createContext("/columns", new Columnhandler());
         server.setExecutor(null);
         server.start();
     }

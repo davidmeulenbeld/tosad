@@ -1,19 +1,37 @@
 package controller;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 import dao.getTableNamesDAO;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-import java.util.ArrayList;
+
+import java.util.HashMap;
 import java.util.List;
 
 public class TableJsonCreator {
 
-    public String convertToJSON(){
-        Gson gsonBuilder = new GsonBuilder().create();
-        getTableNamesDAO gtdao = new getTableNamesDAO();
-        List<String> tablenamelist = gtdao.getTableNames();
-        System.out.println(tablenamelist);
-        return gsonBuilder.toJson(tablenamelist);
+    getTableNamesDAO gtdao = new getTableNamesDAO();
+    public JSONArray convertToJSON(){
+
+        JSONArray arr = new JSONArray();
+        HashMap<String, JSONObject> map = new HashMap<>();
+        List<String> tables =gtdao.getTableNames();
+        int iterator=0;
+        try{
+            for (String t: tables){
+                iterator++;
+                JSONObject json = new JSONObject();
+                json.put("tablename",t);
+                map.put("json"+iterator,json);
+                arr.put(map.get("json"+iterator));
+            }
+        System.out.println(arr);}
+            catch (Exception exc){
+
+
+            }
+            return arr;
+        }
     }
-}
+
