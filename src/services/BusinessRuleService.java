@@ -6,10 +6,8 @@ import com.google.gson.reflect.TypeToken;
 import controller.generateAttributeListrule;
 import controller.generateAttributeRangeRule;
 import controller.generateTupleCompareRule;
-import domain.attributeListRule;
-import domain.OtherRule;
-import domain.attributeRangeRule;
-import domain.tupleCompareRule;
+import controller.generateinterentityrule;
+import domain.*;
 import org.apache.http.*;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,7 +29,7 @@ import static domain.attributeRangeRule.Builder.buildAttributeRangeRule;
 import static domain.attributeListRule.Builder.buildAttributeListRule;
 import static domain.OtherRule.Builder.buildOtherRule;
 import static domain.tupleCompareRule.Builder.buildTupleCompareRule;
-
+import static domain.interEntityCompareRule.Builder.buildInterEntityCompareRule;
 
 public class BusinessRuleService {
 
@@ -256,6 +254,37 @@ public class BusinessRuleService {
                     //SecondAffectedColumn
                     //SecondAffectedTable
                     //Operator
+                    generateinterentityrule gier = new generateinterentityrule();
+                    System.out.println("interEntity compare rule");
+                    String secondcolumn = (String) jso.get("SecondAffectedColumn");
+                    String secondTable = (String) jso.get("SecondAffectedTable");
+                    String operator = (String) jso.get("Operator");
+
+                    interEntityCompareRule iecr = buildInterEntityCompareRule()
+                            .setName(name)
+                            .setOtherColumn(secondcolumn)
+                            .setOtherTable(secondTable)
+                            .setOperator(operator)
+                            .setMainTable(mainTable)
+                            .setAffectedColumn(affectedColumn)
+                            .setInsert(insertBoolean)
+                            .setDelete(deleteBoolean)
+                            .setUpdate(updateBoolean)
+                            .build();
+
+                    System.out.println(constraintBr);
+                    if(constraintBrInt ==1){
+                        String gencode = gier.createinterentityRuleConstraint(iecr);
+                        implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(gencode,
+                                iecr.getBusinessRuleID());
+                    }
+                    if (triggerBrInt == 1){
+                        String gencode = gier.createinterentityRuleTrigger(iecr);
+                        implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(gencode,
+                                iecr.getBusinessRuleID());
+                    }
+
+
 
                 }
 
@@ -279,13 +308,13 @@ public class BusinessRuleService {
                             .build();
 
                     System.out.println(constraintBr);
-                    if(constraintBr == 1){
+                    if(constraintBrInt == 1){
                         String constraintTupleCompareRule = gtcr.createTupleCompareRuleConstraint(tcr);
                         implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(constraintTupleCompareRule,
                                 tcr.getBusinessRuleID());
 
                     }
-                    if(triggerBr == 1){
+                    if(triggerBrInt == 1){
                         String triggerTupleCompareRule = gtcr.createTupleCompareRuleTrigger(tcr);
                         implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(triggerTupleCompareRule,
                                 tcr.getBusinessRuleID());
