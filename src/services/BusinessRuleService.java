@@ -288,9 +288,9 @@ public class BusinessRuleService {
                     //Operator
                     generateinterentityrule gier = new generateinterentityrule();
                     System.out.println("interEntity compare rule");
-                    String secondcolumn = (String) jso.get("SecondAffectedColumn");
-                    String secondTable = (String) jso.get("SecondAffectedTable");
-                    String operator = (String) jso.get("Operator");
+                    String secondcolumn = (String) jso.get("secondaffectedcolumn");
+                    String secondTable = (String) jso.get("secondaffectedtable");
+                    String operator = (String) jso.get("operator");
 
                     interEntityCompareRule iecr = buildInterEntityCompareRule()
                             .setName(name)
@@ -325,8 +325,8 @@ public class BusinessRuleService {
                     //Operator
                     generateTupleCompareRule gtcr = new generateTupleCompareRule();
                     System.out.println("TupleCompareRule");
-                    String secondcolumn = (String) jso.get("SecondAffectedColumn");
-                    String operator = (String) jso.get("Operator");
+                    String secondcolumn = (String) jso.get("secondaffectedcolumn");
+                    String operator = (String) jso.get("operator");
 
                     tupleCompareRule tcr = buildTupleCompareRule()
                             .setName(name)
@@ -355,7 +355,7 @@ public class BusinessRuleService {
 
                 if(type.equals("OtherRule")){
                     System.out.println("otherrule");
-                    String sql= (String) jso.get("SQL_CODE");
+                    String sql= (String) jso.get("sql_code");
 
                     OtherRule other = buildOtherRule()
                             .setName(name)
@@ -366,7 +366,7 @@ public class BusinessRuleService {
                             .setDelete(deleteBoolean)
                             .setUpdate(updateBoolean)
                             .build();
-                    implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(other.getGeneratedCode(),
+                            implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(other.getGeneratedCode(),
                             other.getOtherRuleID());
                 }
 
