@@ -25,11 +25,12 @@ public class TableJsonCreator {
      *
      * @return JSONArray of all tables
      */
-    public JSONArray convertToJSON(){
+    public JSONObject convertToJSON(){
 
         //initialization
         JSONArray arr = new JSONArray();
         HashMap<String, JSONObject> map = new HashMap<>();
+        JSONObject job = new JSONObject();
         //get tables
         List<String> tables =gtdao.getTableNames();
         //can only iterate 1 thing so an extra iterator to keep track
@@ -45,12 +46,13 @@ public class TableJsonCreator {
                 //getting value out of map and setting it in the array
                 arr.put(map.get("json"+iterator));
             }
+            job.put("tables",arr);
         System.out.println(arr);}
             catch (Exception exc){
 
 
             }
-            return arr;
+            return job;
         }
     }
 

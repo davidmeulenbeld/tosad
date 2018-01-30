@@ -34,10 +34,11 @@ public class columnJSONHandler  {
      * Examples of types : Varchar2, Number, Date
      * @throws IOException needs to be thrown otherwise errors alot of errors
      */
-    public JSONArray colummJSONHandle(Map table) throws IOException {
+    public JSONObject colummJSONHandle(Map table) throws IOException {
 
         //initialization
         JSONArray arr = new JSONArray();
+        JSONObject job = new JSONObject();
         HashMap<String, JSONObject> map = new HashMap<String, JSONObject>();
         Object tablename = table.get("table");
         System.out.println(tablename);
@@ -60,13 +61,13 @@ public class columnJSONHandler  {
             arr.put(map.get("json"+iterator));
 
         }
-
+        job.put("columns",arr);
 
         System.out.println(arr);
         }
         catch (Exception exc){
 
         }
-        return arr;
+        return job;
     }
 }

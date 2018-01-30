@@ -7,9 +7,11 @@ import controller.generateAttributeCompareRule;
 import controller.generateAttributeListrule;
 import controller.generateAttributeRangeRule;
 import domain.attributeCompareRule;
+import controller.generateTupleCompareRule;
 import domain.attributeListRule;
 import domain.OtherRule;
 import domain.attributeRangeRule;
+import domain.tupleCompareRule;
 import org.apache.http.*;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,6 +33,7 @@ import static domain.attributeCompareRule.Builder.buildAttributeCompareRule;
 import static domain.attributeRangeRule.Builder.buildAttributeRangeRule;
 import static domain.attributeListRule.Builder.buildAttributeListRule;
 import static domain.OtherRule.Builder.buildOtherRule;
+import static domain.tupleCompareRule.Builder.buildTupleCompareRule;
 
 
 public class BusinessRuleService {
@@ -291,6 +294,34 @@ public class BusinessRuleService {
                 if(type.equals("TupleCompareRule")){
                     //SecondAffectedColumn
                     //Operator
+                    generateTupleCompareRule gtcr = new generateTupleCompareRule();
+                    System.out.println("TupleCompareRule");
+                    String secondcolumn = (String) jso.get("SecondAffectedColumn");
+                    String operator = (String) jso.get("Operator");
+
+                    tupleCompareRule tcr = buildTupleCompareRule()
+                            .setName(name)
+                            .setSecondcolumn(secondcolumn)
+                            .setOperator(operator)
+                            .setMainTable(mainTable)
+                            .setAffectedColumn(affectedColumn)
+                            .setInsert(insertBoolean)
+                            .setDelete(deleteBoolean)
+                            .setUpdate(updateBoolean)
+                            .build();
+
+                    System.out.println(constraintBr);
+                    if(constraintBr == 1){
+                        String constraintTupleCompareRule = gtcr.createTupleCompareRuleConstraint(tcr);
+                        implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(constraintTupleCompareRule,
+                                tcr.getBusinessRuleID());
+
+                    }
+                    if(triggerBr == 1){
+                        String triggerTupleCompareRule = gtcr.createTupleCompareRuleTrigger(tcr);
+                        implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(triggerTupleCompareRule,
+                                tcr.getBusinessRuleID());
+                    }
                 }
 
                 if(type.equals("OtherRule")){
