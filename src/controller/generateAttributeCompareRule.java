@@ -23,6 +23,7 @@ public class generateAttributeCompareRule {
      */
     public attributeCompareRule decideTypeGeneratedAttrComp(attributeCompareRule compareRule) {
         String result = "";
+        //checks if rule is constraint or trigger and calls the corresponding function
         if (compareRule.isConstraint()) {
             result = createAttributeCompareRuleConstraint(compareRule);
         }
@@ -30,13 +31,14 @@ public class generateAttributeCompareRule {
             result = createAttributeCompareRuleTrigger(compareRule);
 
         }
+        //sets generatedcode of attributecomparerule
         compareRule.setGeneratedCode(result);
         return compareRule;
     }
 
     /**
      * Create attribute compare rule trigger.
-     *
+
      * @param compareRule the compare rule
      * @return generated code
      */
@@ -57,7 +59,7 @@ public class generateAttributeCompareRule {
 
     /**
      * Create attribute compare rule constraint .
-     *
+
      * @param compareRule the compare rule
      * @return generated code
      */

@@ -3,10 +3,22 @@ package controller;
 import domain.attributeRangeRule;
 
 
+/**
+ * The controller Generate attribute range rule.
+ */
 public class generateAttributeRangeRule {
-
+    /**
+     *
+     * declaration of general control functions
+     */
     private generalControllerFunctions gtws = new generalControllerFunctions();
 
+    /**
+     * Decide type generated attribute range attribute range rule.
+     *
+     * @param rangeRule the range rule
+     * @return the attribute range rule
+     */
     public attributeRangeRule decideTypeGeneratedAttrRang(attributeRangeRule rangeRule) {
         String result = "";
 
@@ -21,6 +33,12 @@ public class generateAttributeRangeRule {
 
     }
 
+    /**
+     * Create attribute range rule trigger
+     *
+     * @param rangeRule the range rule
+     * @return the string
+     */
     public String createAttributeRangeRuleTrigger(attributeRangeRule rangeRule) {
         String baseString = "create trigger ";
         baseString += rangeRule.getName() + " \n";
@@ -31,6 +49,12 @@ public class generateAttributeRangeRule {
         return baseString;
     }
 
+    /**
+     * Create attribute range rule constraint
+     *
+     * @param rangeRule the range rule
+     * @return the string
+     */
     public String createAttributeRangeRuleConstraint(attributeRangeRule rangeRule) {
         String constraint = "ALTER TABLE ";
         constraint += rangeRule.getMainTable();

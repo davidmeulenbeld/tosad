@@ -2,11 +2,20 @@ package controller;
 
 import domain.tupleCompareRule;
 
+/**
+ * The controller Generate tuple compare rule.
+ */
 public class generateTupleCompareRule {
 
     private generalControllerFunctions gtws = new generalControllerFunctions();
 
-    public tupleCompareRule decideTypeGeneratedAttrComp(tupleCompareRule compareRule) {
+    /**
+     * Decide type generated tuple comp tuple compare rule.
+     *
+     * @param compareRule the compare rule
+     * @return the tuple compare rule
+     */
+    public tupleCompareRule decideTypeGeneratedTupleComp(tupleCompareRule compareRule) {
         String result = "";
         if (compareRule.isConstraint()) {
             result = createTupleCompareRuleConstraint(compareRule);
@@ -19,6 +28,12 @@ public class generateTupleCompareRule {
         return compareRule;
     }
 
+    /**
+     * Create tuple compare rule trigger .
+     *
+     * @param compareRule the compare rule
+     * @return the string
+     */
     public String createTupleCompareRuleTrigger(tupleCompareRule compareRule) {
         String basestring = "Create or replace trigger ";
         basestring += compareRule.getName() + "\n"
@@ -33,6 +48,12 @@ public class generateTupleCompareRule {
         return basestring;
     }
 
+    /**
+     * Create tuple compare rule constraint .
+     *
+     * @param compareRule the compare rule
+     * @return the string
+     */
     public String createTupleCompareRuleConstraint(tupleCompareRule compareRule) {
 
         String basestring = "alter table ";
