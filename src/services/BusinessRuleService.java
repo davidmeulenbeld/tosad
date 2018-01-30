@@ -100,16 +100,58 @@ public class BusinessRuleService {
             JSONArray jxson = (JSONArray) jsa.get(0);
 
 
-
             for(int n = 0; n < jxson.length(); n++)
             {
                 JSONObject jso = jxson.getJSONObject(n);
                 String type = String.valueOf(jso.get("type"));
                 System.out.println("type" + type);
 
+                //General values declare
+
+                String name = String.valueOf(jso.get("name"));
+                String mainTable = String.valueOf(jso.get("maintable"));
+                String affectedColumn = String.valueOf(jso.get("affectedcolumn"));
+
+                double triggerBr = (double) jso.get("triggerbr");
+                int triggerBrInt = (int) triggerBr;
+
+
+                double constraintBr = (double) jso.get("constraintbr");
+                int constraintBrInt = (int) constraintBr;
+
+                double businessRuleID = (double) jso.get("id_businessrule");
+                int businessRuleIDInt = (int) businessRuleID;
+
+                double insert = (double) jso.get("insertbr");
+                boolean insertBoolean = false;
+                if(insert >= 1){
+                    insertBoolean = true;
+                } else {
+                    insertBoolean = false;
+                }
+
+                double update = (double) jso.get("updatebr");
+                boolean updateBoolean = false;
+                if(update >= 1){
+                    updateBoolean = true;
+                } else {
+                    updateBoolean = false;
+                }
+
+                double delete = (double) jso.get("deletebr");
+                boolean deleteBoolean = false;
+                if(delete >= 1){
+                    deleteBoolean = true;
+                } else {
+                    deleteBoolean = false;
+                }
+
+                //End declaring general values
+
                 //Kijken welk type het is
                 if(type.equals("AttributeRangeRule")) {
                     System.out.println("Inside attribute range rule");
+
                     //First we're casting the values to a double and then to an int.
                     //If we do this right away we get the error code: java.base/java.lang.Double cannot be cast to java.base/java.lang.Integer
                     double rangeStart = (double) jso.get("rangestart");
@@ -125,45 +167,6 @@ public class BusinessRuleService {
                     } else if (insideRange == 0) {
                         insideRangeBoolean = false;
                     }
-
-                    String name = String.valueOf(jso.get("name"));
-                    String mainTable = String.valueOf(jso.get("maintable"));
-                    String affectedColumn = String.valueOf(jso.get("affectedcolumn"));
-
-                    double triggerBr = (double) jso.get("triggerbr");
-                    int triggerBrInt = (int) triggerBr;
-
-
-                    double constraintBr = (double) jso.get("constraintbr");
-                    int constraintBrInt = (int) constraintBr;
-
-                    double businessRuleID = (double) jso.get("id_businessrule");
-                    int businessRuleIDInt = (int) businessRuleID;
-
-                    double insert = (double) jso.get("insertbr");
-                    boolean insertBoolean = false;
-                    if(insert >= 1){
-                        insertBoolean = true;
-                    } else {
-                        insertBoolean = false;
-                    }
-
-                    double update = (double) jso.get("updatebr");
-                    boolean updateBoolean = false;
-                    if(insert >= 1){
-                        updateBoolean = true;
-                    } else {
-                        updateBoolean = false;
-                    }
-
-                    double delete = (double) jso.get("deletebr");
-                    boolean deleteBoolean = false;
-                    if(insert >= 1){
-                        deleteBoolean = true;
-                    } else {
-                        deleteBoolean = false;
-                    }
-                    System.out.println("still inside");
 
                     generateAttributeRangeRule gatrr = new generateAttributeRangeRule();
 
@@ -193,7 +196,32 @@ public class BusinessRuleService {
 
                 }
 
-                System.out.println("outside");
+                if(type.equals("AttributeListRule")){
+                    //inList
+                    //StringValue
+                }
+
+                if(type.equals("AttributeCompareRule")){
+                    //Operator
+                    //ValueBR
+                }
+
+                if(type.equals("InterEntityCompareRule")){
+                    //SecondAffectedColumn
+                    //SecondAffectedTable
+                    //Operator
+
+                }
+
+                if(type.equals("TupleCompareRule")){
+                    //SecondAffectedColumn
+                    //Operator
+                }
+
+                if(type.equals("OtherRule")){
+                    //SQL_CODE
+                }
+
 
 
                 System.out.println(n);
