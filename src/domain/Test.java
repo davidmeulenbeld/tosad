@@ -23,7 +23,7 @@ public class Test {
         getTableNamesDAO gtn = new getTableNamesDAO();
 
 
-         BusinessRuleService brs = new BusinessRuleService();
+        BusinessRuleService brs = new BusinessRuleService();
         System.out.println(gtn.getTableNames());
         brs.getBusinessRules();
 

@@ -3,7 +3,9 @@ package services;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import controller.generateAttributeListrule;
 import controller.generateAttributeRangeRule;
+import domain.attributeListRule;
 import domain.attributeRangeRule;
 import org.apache.http.*;
 import org.json.JSONArray;
@@ -18,13 +20,12 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 import dao.implementBusinesRuleDAO;
 
 import static domain.attributeRangeRule.Builder.buildAttributeRangeRule;
+import static domain.attributeListRule.Builder.buildAttributeListRule;
 
 public class BusinessRuleService {
 
@@ -192,13 +193,52 @@ public class BusinessRuleService {
                     if(triggerBrInt == 1) {
                         String triggerAttributeRangeRUle = gatrr.createAttributeRangeRuleTrigger(atrr);
                         implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(triggerAttributeRangeRUle, businessRuleIDInt);
+                        implbrdao.updateActiveBusinessRule(businessRuleIDInt);
                     }
 
                 }
 
                 if(type.equals("AttributeListRule")){
                     //inList
+                    //First we're casting the values to a double and then to an int.
+                    //If we do this right away we get the error code: java.base/java.lang.Double cannot be cast to java.base/java.lang.Integer
+                    double inList = (double) jso.get("inlist");
+                    int inListInt = (int) inList;
+                    boolean inlistBoolean = false;
+                    if(inListInt == 1) {
+                        inlistBoolean = true;
+                    } else {
+                        inlistBoolean = false;
+                    }
+                    String stringValue = String.valueOf(jso.get("stringvalue"));
+                    List<String> list = Arrays.asList(stringValue.split(":"));
+                    ArrayList<String> arrayList = new ArrayList(list);
                     //StringValue
+                    generateAttributeListrule gatlr = new generateAttributeListrule();
+
+                    attributeListRule atlr = buildAttributeListRule()
+                            .setName(name)
+                            .setMainTable(mainTable)
+                            .setAffectedColumn(affectedColumn)
+                            .setInsert(insertBoolean)
+                            .setUpdate(updateBoolean)
+                            .setDelete(deleteBoolean)
+                            .setInList(inlistBoolean)
+                            .setList(arrayList)
+                            .build();
+
+                    if(constraintBrInt == 1) {
+                        String constraintAttributeListRule = gatlr.createAttributeListRuleConstraint(atlr);
+                        implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(constraintAttributeListRule, businessRuleIDInt);
+                        implbrdao.updateActiveBusinessRule(businessRuleIDInt);
+                    }
+
+                    if(triggerBrInt == 1) {
+                        String triggerAttributeListRule = gatlr.createAttributeListRuleTrigger(atlr);
+                        implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(triggerAttributeListRule, businessRuleIDInt);
+                        implbrdao.updateActiveBusinessRule(businessRuleIDInt);
+                    }
+
                 }
 
                 if(type.equals("AttributeCompareRule")){
