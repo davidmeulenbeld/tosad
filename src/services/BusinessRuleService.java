@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import controller.generateAttributeRangeRule;
+import domain.OtherRule;
 import domain.attributeRangeRule;
 import org.apache.http.*;
 import org.json.JSONArray;
@@ -25,6 +26,7 @@ import java.util.Map;
 import dao.implementBusinesRuleDAO;
 
 import static domain.attributeRangeRule.Builder.buildAttributeRangeRule;
+import static domain.OtherRule.Builder.buildOtherRule;
 
 public class BusinessRuleService {
 
@@ -219,7 +221,20 @@ public class BusinessRuleService {
                 }
 
                 if(type.equals("OtherRule")){
-                    //SQL_CODE
+                    System.out.println("otherrule");
+                    String sql= (String) jso.get("SQL_CODE");
+
+                    OtherRule other = buildOtherRule()
+                            .setName(name)
+                            .setGeneratedCode(sql)
+                            .setMainTable(mainTable)
+                            .setAffectedColumn(affectedColumn)
+                            .setInsert(insertBoolean)
+                            .setDelete(deleteBoolean)
+                            .setUpdate(updateBoolean)
+                            .build();
+                    implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(other.getGeneratedCode(),
+                            other.getOtherRuleID());
                 }
 
 
