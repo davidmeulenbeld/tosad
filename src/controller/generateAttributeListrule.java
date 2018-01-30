@@ -3,7 +3,7 @@ package controller;
 import domain.attributeListRule;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  * The controller Generate attribute listrule.

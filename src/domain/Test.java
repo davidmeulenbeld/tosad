@@ -2,13 +2,11 @@ package domain;
 
 import controller.generateAttributeCompareRule;
 import controller.generateAttributeListrule;
-import dao.BaseDAO;
 
-import services.BusinessRuleService;
 import dao.getTableNamesDAO;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 import dao.implementBusinesRuleDAO;
 
@@ -23,7 +21,7 @@ public class Test {
         generateAttributeListrule gal = new generateAttributeListrule();
         getTableNamesDAO gtn = new getTableNamesDAO();
 //        implementBusinesRuleDAO ibr = new implementBusinesRuleDAO();
-//
+
 //
 //        ArrayList list = new ArrayList();
 //        list.add("a");
@@ -65,13 +63,13 @@ public class Test {
 //        System.out.println("decided-------------------------------");
 //        // System.out.println(decidedtype);
 //        System.out.println(ibr.checkIsActive(51));
-//        ibr.implementBusinessRule(ac.getGeneratedCode(), ac.getBusinessRuleID());
+
         // BusinessRuleService brs = new BusinessRuleService();
 
 
-        BusinessRuleService brs = new BusinessRuleService();
-
-        brs.getBusinessRules();
+       // BusinessRuleService brs = new BusinessRuleService();
+        System.out.println(gtn.getTableNames());
+        //brs.getBusinessRules();
 
     }
 }
