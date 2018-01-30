@@ -3,8 +3,10 @@ package services;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import controller.generateAttributeCompareRule;
 import controller.generateAttributeListrule;
 import controller.generateAttributeRangeRule;
+import domain.attributeCompareRule;
 import domain.attributeListRule;
 import domain.OtherRule;
 import domain.attributeRangeRule;
@@ -25,6 +27,7 @@ import java.util.*;
 
 import dao.implementBusinesRuleDAO;
 
+import static domain.attributeCompareRule.Builder.buildAttributeCompareRule;
 import static domain.attributeRangeRule.Builder.buildAttributeRangeRule;
 import static domain.attributeListRule.Builder.buildAttributeListRule;
 import static domain.OtherRule.Builder.buildOtherRule;
@@ -84,7 +87,7 @@ public class BusinessRuleService {
                     }
                 }
 
-                inputLine = new GsonBuilder().setPrettyPrinting().create().toJson(data);
+                inputLine = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create().toJson(data);
                 //Einde SO Gebruik
 
                 JSONObject json = new JSONObject(inputLine);
@@ -247,6 +250,35 @@ public class BusinessRuleService {
                 if(type.equals("AttributeCompareRule")){
                     //Operator
                     //ValueBR
+                    String operator = String.valueOf(jso.get("operator"));
+                    double valueBr = (double) jso.get("valuebr");
+                    int valueBrInt = (int) valueBr;
+
+                    generateAttributeCompareRule gatcr = new generateAttributeCompareRule();
+
+                    attributeCompareRule acr = buildAttributeCompareRule()
+                            .setName(name)
+                            .setMainTable(mainTable)
+                            .setAffectedColumn(affectedColumn)
+                            .setInsert(insertBoolean)
+                            .setUpdate(updateBoolean)
+                            .setDelete(deleteBoolean)
+                            .setOperator(operator)
+                            .setValue(valueBrInt)
+                            .build();
+
+                    if(constraintBrInt == 1) {
+                        String constraintAttributeCompareRule = gatcr.createAttributeCompareRuleConstraint(acr);
+                        implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(constraintAttributeCompareRule, businessRuleIDInt);
+                        implbrdao.updateActiveBusinessRule(businessRuleIDInt);
+                    }
+
+                    if(triggerBrInt == 1) {
+                        String triggerAttributeCompareRule = gatcr.createAttributeCompareRuleTrigger(acr);
+                        implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(triggerAttributeCompareRule, businessRuleIDInt);
+                        implbrdao.updateActiveBusinessRule(businessRuleIDInt);
+                    }
+
                 }
 
                 if(type.equals("InterEntityCompareRule")){
