@@ -156,7 +156,7 @@ public class BusinessRuleService {
 
                 //End declaring general values
 
-                //Kijken welk type het is
+                //Looking for which type the rule is
                 if(type.equals("AttributeRangeRule")) {
                     System.out.println("Inside attribute range rule");
 
@@ -369,23 +369,8 @@ public class BusinessRuleService {
                             implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(other.getGeneratedCode(),
                             other.getOtherRuleID());
                 }
-
-
-
-                System.out.println(n);
+                //end loop
             }
-
-
-
-
-            //TODO: Adhv type een controller aanroepen
-            //TODO: Rest service POST Gegenereerde businessrule
-
-
-
-            //print result
-//            System.out.println(jsa.toString());
-
         }
 
         catch (ProtocolException e) {
