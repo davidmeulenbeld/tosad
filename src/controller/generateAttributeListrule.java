@@ -17,9 +17,8 @@ public class generateAttributeListrule {
 
     /**
      * Decide type generated of attribute list rule.
-     * <p>
-     * returns object
-     * for now returns a string
+     *
+     *  returns a string
      *
      * @param listRule the list rule
      * @return listRule

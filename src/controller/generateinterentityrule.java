@@ -2,10 +2,19 @@ package controller;
 
 import domain.interEntityCompareRule;
 
+/**
+ * The Controller Generate inter entity rule.
+ */
 public class generateinterentityrule {
 
     private generalControllerFunctions gtws = new generalControllerFunctions();
 
+    /**
+     * Decide type generated inter entity compare inter entity compare rule.
+     *
+     * @param compareRule the compare rule
+     * @return the inter entity compare rule
+     */
     public interEntityCompareRule decideTypeGeneratedIEcomp(interEntityCompareRule compareRule) {
         String result = "";
         if (compareRule.isConstraint()) {
@@ -19,6 +28,12 @@ public class generateinterentityrule {
         return compareRule;
     }
 
+    /**
+     * Create interentity rule trigger .
+     *
+     * @param compareRule the compare rule
+     * @return the string
+     */
     public String createinterentityRuleTrigger(interEntityCompareRule compareRule) {
         String basestring = "Create or replace trigger ";
         basestring += compareRule.getName() + "\n"
@@ -32,6 +47,12 @@ public class generateinterentityrule {
         return basestring;
     }
 
+    /**
+     * Create interentity rule constraint .
+     *
+     * @param compareRule the compare rule
+     * @return the string
+     */
     public String createinterentityRuleConstraint(interEntityCompareRule compareRule) {
 
         String basestring = "alter table ";
