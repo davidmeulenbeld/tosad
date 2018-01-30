@@ -4,9 +4,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class implementBusinesRuleDAO extends BaseDAO {
+public class implementBusinessRuleDAO extends BaseDAO {
 
-    public implementBusinesRuleDAO(String generatedCode, int businessRuleID) {
+    public implementBusinessRuleDAO(String generatedCode, int businessRuleID) {
         if (!checkIsActive(businessRuleID)) {
             try {
                 Connection con = BaseDAO.getTargetConnection();

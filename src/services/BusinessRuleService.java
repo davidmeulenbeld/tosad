@@ -25,7 +25,7 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.*;
 
-import dao.implementBusinesRuleDAO;
+import dao.implementBusinessRuleDAO;
 
 import static domain.attributeCompareRule.Builder.buildAttributeCompareRule;
 import static domain.attributeRangeRule.Builder.buildAttributeRangeRule;
@@ -193,13 +193,13 @@ public class BusinessRuleService {
                     System.out.println(constraintBr);
                     if(constraintBrInt == 1) {
                         String constraintAttributeRangeRule = gatrr.createAttributeRangeRuleConstraint(atrr);
-                        implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(constraintAttributeRangeRule, businessRuleIDInt);
+                        implementBusinessRuleDAO implbrdao = new implementBusinessRuleDAO(constraintAttributeRangeRule, businessRuleIDInt);
                         implbrdao.updateActiveBusinessRule(businessRuleIDInt);
                     }
                     System.out.println(triggerBr);
                     if(triggerBrInt == 1) {
                         String triggerAttributeRangeRUle = gatrr.createAttributeRangeRuleTrigger(atrr);
-                        implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(triggerAttributeRangeRUle, businessRuleIDInt);
+                        implementBusinessRuleDAO implbrdao = new implementBusinessRuleDAO(triggerAttributeRangeRUle, businessRuleIDInt);
                         implbrdao.updateActiveBusinessRule(businessRuleIDInt);
                     }
 
@@ -236,13 +236,13 @@ public class BusinessRuleService {
 
                     if(constraintBrInt == 1) {
                         String constraintAttributeListRule = gatlr.createAttributeListRuleConstraint(atlr);
-                        implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(constraintAttributeListRule, businessRuleIDInt);
+                        implementBusinessRuleDAO implbrdao = new implementBusinessRuleDAO(constraintAttributeListRule, businessRuleIDInt);
                         implbrdao.updateActiveBusinessRule(businessRuleIDInt);
                     }
 
                     if(triggerBrInt == 1) {
                         String triggerAttributeListRule = gatlr.createAttributeListRuleTrigger(atlr);
-                        implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(triggerAttributeListRule, businessRuleIDInt);
+                        implementBusinessRuleDAO implbrdao = new implementBusinessRuleDAO(triggerAttributeListRule, businessRuleIDInt);
                         implbrdao.updateActiveBusinessRule(businessRuleIDInt);
                     }
 
@@ -270,13 +270,13 @@ public class BusinessRuleService {
 
                     if(constraintBrInt == 1) {
                         String constraintAttributeCompareRule = gatcr.createAttributeCompareRuleConstraint(acr);
-                        implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(constraintAttributeCompareRule, businessRuleIDInt);
+                        implementBusinessRuleDAO implbrdao = new implementBusinessRuleDAO(constraintAttributeCompareRule, businessRuleIDInt);
                         implbrdao.updateActiveBusinessRule(businessRuleIDInt);
                     }
 
                     if(triggerBrInt == 1) {
                         String triggerAttributeCompareRule = gatcr.createAttributeCompareRuleTrigger(acr);
-                        implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(triggerAttributeCompareRule, businessRuleIDInt);
+                        implementBusinessRuleDAO implbrdao = new implementBusinessRuleDAO(triggerAttributeCompareRule, businessRuleIDInt);
                         implbrdao.updateActiveBusinessRule(businessRuleIDInt);
                     }
 
@@ -307,12 +307,12 @@ public class BusinessRuleService {
                     System.out.println(constraintBr);
                     if(constraintBrInt ==1){
                         String gencode = gier.createinterentityRuleConstraint(iecr);
-                        implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(gencode,
+                        implementBusinessRuleDAO implbrdao = new implementBusinessRuleDAO(gencode,
                                 iecr.getBusinessRuleID());
                     }
                     if (triggerBrInt == 1){
                         String gencode = gier.createinterentityRuleTrigger(iecr);
-                        implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(gencode,
+                        implementBusinessRuleDAO implbrdao = new implementBusinessRuleDAO(gencode,
                                 iecr.getBusinessRuleID());
                     }
 
@@ -342,13 +342,13 @@ public class BusinessRuleService {
                     System.out.println(constraintBr);
                     if(constraintBrInt == 1){
                         String constraintTupleCompareRule = gtcr.createTupleCompareRuleConstraint(tcr);
-                        implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(constraintTupleCompareRule,
+                        implementBusinessRuleDAO implbrdao = new implementBusinessRuleDAO(constraintTupleCompareRule,
                                 tcr.getBusinessRuleID());
 
                     }
                     if(triggerBrInt == 1){
                         String triggerTupleCompareRule = gtcr.createTupleCompareRuleTrigger(tcr);
-                        implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(triggerTupleCompareRule,
+                        implementBusinessRuleDAO implbrdao = new implementBusinessRuleDAO(triggerTupleCompareRule,
                                 tcr.getBusinessRuleID());
                     }
                 }
@@ -366,7 +366,7 @@ public class BusinessRuleService {
                             .setDelete(deleteBoolean)
                             .setUpdate(updateBoolean)
                             .build();
-                            implementBusinesRuleDAO implbrdao = new implementBusinesRuleDAO(other.getGeneratedCode(),
+                            implementBusinessRuleDAO implbrdao = new implementBusinessRuleDAO(other.getGeneratedCode(),
                             other.getOtherRuleID());
                 }
                 //end loop
