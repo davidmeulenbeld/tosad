@@ -17,6 +17,7 @@ public class BusinessRuleHandler implements HttpHandler{
         BusinessRuleService brs = new BusinessRuleService();
         //implementing non active businessrules
         brs.getBusinessRules();
+        
         String response = "non active businessrules are being generated " ;
         he.sendResponseHeaders(200, response.length());
         OutputStream os = he.getResponseBody();
