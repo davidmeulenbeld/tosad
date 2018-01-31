@@ -19,9 +19,10 @@ public class ACMPDAO extends BaseDAO{
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("select a.name, a.maintable, a.insertbr,a.updatebr," +
                     "a.deletebr,a.triggerbr,a.constraintbr,a.errorcode,a.affectedcolumn,b.operator,b.valuebr from businessrule a,attributecomparerule b" +
-                    "where a.id_businessrule = "+ id +" and b.id_businessrule = "+id);
+                    " where a.id_businessrule = "+ id +" and b.id_businessrule = "+id);
 
             //get columns
+            while (rs.next()){
             String name = rs.getString("name");
             String maintable = rs.getString("maintable");
             boolean insert = gdf.istrue(rs.getInt("insertbr"));
@@ -51,6 +52,7 @@ public class ACMPDAO extends BaseDAO{
                     .build();
                 acmp = acr;
             //return object
+            }
         }
         catch(Exception e){
             e.printStackTrace();
