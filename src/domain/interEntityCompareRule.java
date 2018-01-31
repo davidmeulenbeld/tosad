@@ -6,7 +6,7 @@ public class interEntityCompareRule extends BusinessRule {
     private String otherColumn;
     private String operator;
     private int interentityID;
-
+//getters
     public String getOtherTable() {
         return otherTable;
     }
@@ -22,7 +22,7 @@ public class interEntityCompareRule extends BusinessRule {
     public int getInterentityID() {
         return interentityID;
     }
-
+    //setters
     public void setOtherTable(String otherTable) {
         this.otherTable = otherTable;
     }
@@ -48,7 +48,7 @@ public class interEntityCompareRule extends BusinessRule {
                 ", interentityID=" + interentityID +
                 "} " + super.toString();
     }
-
+//builds the object
     public static final class Builder {
         protected String code;
         protected String name;

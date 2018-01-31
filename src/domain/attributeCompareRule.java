@@ -58,6 +58,7 @@ public class attributeCompareRule extends BusinessRule {
                 "} " + super.toString();
     }
 
+    //builds the object
     public static final class Builder {
         protected String code;
         protected String name;

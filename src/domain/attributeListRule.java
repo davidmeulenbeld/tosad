@@ -56,7 +56,7 @@ public class attributeListRule extends BusinessRule {
                 ", attributeListRuleID=" + attributeListRuleID +
                 "} " + super.toString();
     }
-
+//builds the object
     public static final class Builder {
         protected String code;
         protected String name;

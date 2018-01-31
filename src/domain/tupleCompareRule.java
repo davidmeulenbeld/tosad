@@ -6,6 +6,7 @@ public class tupleCompareRule extends BusinessRule {
 
     private String operator;
 
+    //getters and setters
     public String getSecondcolumn() {
         return secondcolumn;
     }
@@ -32,7 +33,7 @@ public class tupleCompareRule extends BusinessRule {
                 ", secondcolumn='" + secondcolumn + '\'' +
                 "} " + super.toString();
     }
-
+//builds the object
     public static final class Builder {
         protected String code;
         protected String name;

@@ -1,9 +1,12 @@
 package domain;
 
+/**
+ * object for sending columns
+ */
 public class column {
     String name;
     String type;
-
+//getters and setters
     public String getName() {
         return name;
     }

@@ -5,7 +5,7 @@ public class OtherRule extends BusinessRule {
     private String sql;
     private int otherRuleID;
 
-
+//getters and setters
     public String getSql() {
         return sql;
     }
@@ -30,7 +30,7 @@ public class OtherRule extends BusinessRule {
                 "} " + super.toString();
     }
 
-
+//builds object
     public static final class Builder {
         protected String code;
         protected String name;
