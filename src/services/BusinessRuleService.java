@@ -51,7 +51,7 @@ public class BusinessRuleService {
                 return hostname.equals("ondora02.hu.nl");
             }
         });
-
+        //Trying to get a connection
         try {
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -61,7 +61,7 @@ public class BusinessRuleService {
 
             //add request header
             con.setRequestProperty("User-Agent", USER_AGENT);
-
+            //Getting the response and logging out information
             int responseCode = con.getResponseCode();
             System.out.println("\nSending 'GET' request to URL : " + url);
             System.out.println("Response Code : " + responseCode);
@@ -69,11 +69,11 @@ public class BusinessRuleService {
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(con.getInputStream()));
             String inputLine;
-            StringBuffer response = new StringBuffer();
+            //defining json array to fill the values with
             JSONArray jsa = new JSONArray();
             while ((inputLine = in.readLine()) != null) {
 
-                //https://stackoverflow.com/questions/31039207/jsonobject-remove-empty-value-pairs (Dubbele values uit json halen)
+                //https://stackoverflow.com/questions/31039207/jsonobject-remove-empty-value-pairs (Getting rid of double values)
                 Type type = new TypeToken<Map<String, Object>>() {}.getType();
                 Map<String, Object> data = new Gson().fromJson(inputLine, type);
 
@@ -87,42 +87,45 @@ public class BusinessRuleService {
                         }
                     }
                 }
-
+                //disableHtmlEscaping = so we can have things like '=' as operator, or else it will be translated to utf-8 code
                 inputLine = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create().toJson(data);
-                //Einde SO Gebruik
+                //End stackoverflow
 
                 JSONObject json = new JSONObject(inputLine);
                 System.out.println(json.toString());
+                //Getting items, we do not need any other values from the json values
                 JSONArray items = json.getJSONArray("items");
+                //We want to get the first row
                 JSONObject row = items.getJSONObject(0);
                 System.out.println("row" + row);
 
-
+                //We're filling the json array with our just gotten items
                 jsa.put(items);
-                System.out.println(inputLine);
+
             }
             in.close();
 
-            System.out.println(jsa.get(0));
-
+            //Getting the first value, the problem with the json array is that the brackets keep stacking, this gets rid of that problem
             JSONArray jxson = (JSONArray) jsa.get(0);
 
-
+            //Looping over all the business rules
             for(int n = 0; n < jxson.length(); n++)
             {
+                //Getting the first or N for the next business rule
                 JSONObject jso = jxson.getJSONObject(n);
+                //Getting the type, later we will filter on the type
                 String type = String.valueOf(jso.get("type"));
-                System.out.println("type" + type);
 
                 //General values declare
-
+                //Declaring values that we can use in ANY type
                 String name = String.valueOf(jso.get("name"));
                 String mainTable = String.valueOf(jso.get("maintable"));
                 String affectedColumn = String.valueOf(jso.get("affectedcolumn"));
 
+                //First we're casting the values to a double and then to an int.
+                //If we do this right away we get the error code: java.base/java.lang.Double cannot be cas
                 double triggerBr = (double) jso.get("triggerbr");
                 int triggerBrInt = (int) triggerBr;
-
 
                 double constraintBr = (double) jso.get("constraintbr");
                 int constraintBrInt = (int) constraintBr;
@@ -154,12 +157,12 @@ public class BusinessRuleService {
                     deleteBoolean = false;
                 }
 
+                //End of casting of all the values
+
                 //End declaring general values
 
-                //Looking for which type the rule is
+                //Filtering for which type the rule is
                 if(type.equals("AttributeRangeRule")) {
-                    System.out.println("Inside attribute range rule");
-
                     //First we're casting the values to a double and then to an int.
                     //If we do this right away we get the error code: java.base/java.lang.Double cannot be cast to java.base/java.lang.Integer
                     double rangeStart = (double) jso.get("rangestart");
@@ -175,9 +178,9 @@ public class BusinessRuleService {
                     } else if (insideRange == 0) {
                         insideRangeBoolean = false;
                     }
-
+                    //The controller
                     generateAttributeRangeRule gatrr = new generateAttributeRangeRule();
-
+                    //The object that we want to give on to the controller
                     attributeRangeRule atrr = buildAttributeRangeRule()
                             .setName(name)
                             .setRangeStart(rangeStartInt)
@@ -190,13 +193,13 @@ public class BusinessRuleService {
                             .setUpdate(updateBoolean)
                             .build();
 
-                    System.out.println(constraintBr);
+                    //If the constraint value = 1, it's true. We need other functions in the controller.
                     if(constraintBrInt == 1) {
                         String constraintAttributeRangeRule = gatrr.createAttributeRangeRuleConstraint(atrr);
                         implementBusinessRuleDAO implbrdao = new implementBusinessRuleDAO(constraintAttributeRangeRule, businessRuleIDInt);
                         implbrdao.updateActiveBusinessRule(businessRuleIDInt);
                     }
-                    System.out.println(triggerBr);
+                    //If the trigger value = 1, it's true. We need other functions in the controller.
                     if(triggerBrInt == 1) {
                         String triggerAttributeRangeRUle = gatrr.createAttributeRangeRuleTrigger(atrr);
                         implementBusinessRuleDAO implbrdao = new implementBusinessRuleDAO(triggerAttributeRangeRUle, businessRuleIDInt);
@@ -204,7 +207,7 @@ public class BusinessRuleService {
                     }
 
                 }
-
+                //Filtering for the type
                 if(type.equals("AttributeListRule")){
                     //inList
                     //First we're casting the values to a double and then to an int.
@@ -217,12 +220,15 @@ public class BusinessRuleService {
                     } else {
                         inlistBoolean = false;
                     }
+
+                    //The values are in a LOV with a seperate of :, we will split that string and cast it to an arraylist
                     String stringValue = String.valueOf(jso.get("stringvalue"));
                     List<String> list = Arrays.asList(stringValue.split(":"));
                     ArrayList<String> arrayList = new ArrayList(list);
-                    //StringValue
+                    //end
+                    //Controller
                     generateAttributeListrule gatlr = new generateAttributeListrule();
-
+                    //Object which we're going to give to the controller
                     attributeListRule atlr = buildAttributeListRule()
                             .setName(name)
                             .setMainTable(mainTable)
@@ -233,12 +239,13 @@ public class BusinessRuleService {
                             .setInList(inlistBoolean)
                             .setList(arrayList)
                             .build();
-
+                    //If the constraint value = 1, it's true. We need other functions in the controller.
                     if(constraintBrInt == 1) {
                         String constraintAttributeListRule = gatlr.createAttributeListRuleConstraint(atlr);
                         implementBusinessRuleDAO implbrdao = new implementBusinessRuleDAO(constraintAttributeListRule, businessRuleIDInt);
                         implbrdao.updateActiveBusinessRule(businessRuleIDInt);
                     }
+                    //If the trigger value = 1, it's true. We need other functions in the controller.
 
                     if(triggerBrInt == 1) {
                         String triggerAttributeListRule = gatlr.createAttributeListRuleTrigger(atlr);
@@ -247,10 +254,11 @@ public class BusinessRuleService {
                     }
 
                 }
-
+                //Filtering for the type
+                //For the rest of the comments, everything of the trigger or constraint is the same as above here.
+                //Just as is the same for controller and object.
                 if(type.equals("AttributeCompareRule")){
-                    //Operator
-                    //ValueBR
+
                     String operator = String.valueOf(jso.get("operator"));
                     double valueBr = (double) jso.get("valuebr");
                     int valueBrInt = (int) valueBr;
@@ -281,13 +289,10 @@ public class BusinessRuleService {
                     }
 
                 }
-
+                //Filtering for the type
                 if(type.equals("InterEntityCompareRule")){
-                    //SecondAffectedColumn
-                    //SecondAffectedTable
-                    //Operator
+
                     generateinterentityrule gier = new generateinterentityrule();
-                    System.out.println("interEntity compare rule");
                     String secondcolumn = (String) jso.get("secondaffectedcolumn");
                     String secondTable = (String) jso.get("secondaffectedtable");
                     String operator = (String) jso.get("operator");
@@ -304,7 +309,6 @@ public class BusinessRuleService {
                             .setUpdate(updateBoolean)
                             .build();
 
-                    System.out.println(constraintBr);
                     if(constraintBrInt ==1){
                         String gencode = gier.createinterentityRuleConstraint(iecr);
                         implementBusinessRuleDAO implbrdao = new implementBusinessRuleDAO(gencode,
@@ -315,16 +319,12 @@ public class BusinessRuleService {
                         implementBusinessRuleDAO implbrdao = new implementBusinessRuleDAO(gencode,
                                 iecr.getBusinessRuleID());
                     }
-
-
-
                 }
 
+                //Filtering for the type
                 if(type.equals("TupleCompareRule")){
-                    //SecondAffectedColumn
-                    //Operator
+
                     generateTupleCompareRule gtcr = new generateTupleCompareRule();
-                    System.out.println("TupleCompareRule");
                     String secondcolumn = (String) jso.get("secondaffectedcolumn");
                     String operator = (String) jso.get("operator");
 
@@ -339,7 +339,6 @@ public class BusinessRuleService {
                             .setUpdate(updateBoolean)
                             .build();
 
-                    System.out.println(constraintBr);
                     if(constraintBrInt == 1){
                         String constraintTupleCompareRule = gtcr.createTupleCompareRuleConstraint(tcr);
                         implementBusinessRuleDAO implbrdao = new implementBusinessRuleDAO(constraintTupleCompareRule,
@@ -354,8 +353,7 @@ public class BusinessRuleService {
                 }
 
                 if(type.equals("OtherRule")){
-                    System.out.println("otherrule");
-                    String sql= (String) jso.get("sql_code");
+                    String sql = (String) jso.get("sql_code");
 
                     OtherRule other = buildOtherRule()
                             .setName(name)

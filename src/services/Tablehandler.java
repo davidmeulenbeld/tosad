@@ -13,7 +13,7 @@ public class Tablehandler implements HttpHandler {
 
     public void handle(HttpExchange he) throws IOException {
         TableJsonCreator tjc = new TableJsonCreator();
-        String response =  tjc.convertToJSON().toString();
+        String response =  tjc.convertToJSON();
         he.sendResponseHeaders(200,response.length());
         OutputStream os = he.getResponseBody();
         os.write(response.getBytes());
