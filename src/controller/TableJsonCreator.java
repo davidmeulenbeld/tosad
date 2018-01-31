@@ -25,34 +25,24 @@ public class TableJsonCreator {
      *
      * @return JSONArray of all tables
      */
-    public JSONObject convertToJSON(){
+    public String convertToJSON(){
 
         //initialization
-        JSONArray arr = new JSONArray();
-        HashMap<String, JSONObject> map = new HashMap<>();
-        JSONObject job = new JSONObject();
-        //get tables
+        String baseString ="";
+
         List<String> tables =gtdao.getTableNames();
         //can only iterate 1 thing so an extra iterator to keep track
-        int iterator=0;
+
         try{
             for (String t: tables){
-                iterator++;
-                //constructing the JSON object
-                JSONObject json = new JSONObject();
-                json.put("tablename",t);
-                //putting it in map
-                map.put("json"+iterator,json);
-                //getting value out of map and setting it in the array
-                arr.put(map.get("json"+iterator));
-            }
-            job.put("tables",arr);
-        System.out.println(arr);}
+            baseString += t + ";";
+        }}
             catch (Exception exc){
 
 
             }
-            return job;
+            baseString = baseString.substring(0,baseString.length()-1);
+            return baseString;
         }
     }
 
