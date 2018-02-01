@@ -20,7 +20,9 @@ public class BusinessRuleHandler implements HttpHandler{
         System.out.println("HELLO");
         getInActiveBR gibr = new getInActiveBR();
         System.out.println("HELLO");
+
         ArrayList<ArrayList> codes = gibr.gettoimplementcode();
+        System.out.println(codes);
         implementinghandler ih = new implementinghandler();
         ih.implementintoDB(codes);
 
